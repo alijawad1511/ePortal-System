@@ -8,6 +8,9 @@
     <title>Dashboard</title>
 
     <?php include 'links.php' ?>
+    <script src="../js/logout_dropdown.js"></script>
+    <script src="../js/sidebar_showhide.js"></script>
+    
 </head>
 
 <body>
@@ -95,7 +98,7 @@
                             <i class="fa fa-bars" aria-hidden="true"></i>
                         </button>
                     </div>
-                    <span class="ml-auto mr-2 font-weight-bold" style="font-size: 20px;">Jawad Shah</span>
+                    <!-- <span class="ml-auto mr-2 font-weight-bold" style="font-size: 20px;">Jawad Shah</span> -->
                     <a class="text-decoration-none">
                         <img src="../assets/user-profile.jpg" id="user-profile" onclick="showDropdown()" width="40" height="40" class="rounded-circle ml-auto" alt="">
                         <div class="card p-2 bg-white shadow" id="dropdown">
@@ -106,7 +109,7 @@
                                 <div>
                                     <div class="text-primary font-weight-bold" id="username" style="font-size: 18px;">Syed Ali Jawad
                                     </div>
-                                    <div class="text-dark font-weight-bold" id="user-id" style="font-size: 14px;">F2019266282</div>
+                                    <div class="text-dark font-weight-bold" id="user-id" style="font-size: 14px;">Admin</div>
                                 </div>
                             </div>
                             <a href="#" class="nav-link text-dark font-weight-bold"><i class="fa fa-key pr-2"></i> Change
@@ -195,48 +198,6 @@
 
     </div>
     <!-- Wrapper End     -->
-
-    <script>
-
-
-        // Show/Hide Sidebar
-        let hideNavbar = false;
-
-        function hideSidebar() {
-
-            if (hideNavbar == false) {
-                document.getElementById('sidebar').style.marginLeft = "-250px";
-                document.getElementById('content').style.marginLeft = "0";
-                hideNavbar = true;
-            }
-            else {
-                document.getElementById('sidebar').style.marginLeft = "0";
-                document.getElementById('content').style.marginLeft = "250px";
-                hideNavbar = false;
-            }
-
-        }
-
-
-        // Logout Dropdown
-        var flag = false;
-
-        function showDropdown(){
-            console.log('Hello');
-            if(flag==false){
-                document.getElementById('dropdown').style.display = "block";
-                flag = true;
-            }else{
-                document.getElementById('dropdown').style.display = "none";
-                flag = false;
-            }
-        }
-
-
-
-
-
-    </script>
 
 </body>
 

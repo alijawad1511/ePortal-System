@@ -8,7 +8,10 @@
     <title>Manage Teachers</title>
 
     <?php include 'links.php'; ?>
+    <script src="../js/logout_dropdown.js"></script>
+    <script src="../js/sidebar_showhide.js"></script>
     <script src="../js/teacher_registration.js"></script>
+    
 
 </head>
 
@@ -91,42 +94,36 @@
         <div id="content" class="overflow-auto">
 
             <!-- Top Navbar -->
-            <nav class="navbar navbar-expand-lg navbar-light bg-light mb-2">
-
-                <button class="btn" id="sidebar-toggler" onclick="hideSidebar()"><span
-                        class="navbar-toggler-icon"></span></button>
-
-                <!-- <span class="p-2 ml-4" style="font-size: 18px;"><b>News</b></span> -->
-                <!-- <div class="border p-1 pt-2 ml-2 d-md-block d-none col-lg-8 col-md-8 " id="topbar-news">
-                    <marquee class="txt" direction="left" onmouseover="stop" onmouseout="start">This is an ePortal
-                        System created by our Group for Web Technologies.</marquee>
-                </div> -->
-
-                <div class="ml-auto">
-                    <span class="font-weight-bold mr-1" style="font-size: 18px;">Admin</span>
-                    <img src="../assets/user-profile.jpg" id="user-profile" width="40" height="40" class="rounded-circle"
-                        alt="">
-                    <div class="card p-2 bg-white shadow" id="dropdown">
-                        <div class="useinfo p-2 mb-2 d-flex">
-                            <div>
-                                <img src="img/user-icon.png" class="rounded-circle mr-3" width="50" height="50">
-                            </div>
-                            <div>
-                                <div class="font-weight-bold" id="username" style="font-size: 18px;">Syed Ali Jawad
-                                </div>
-                                <div class="" id="user-id" style="font-size: 14px;">F2019266282</div>
-                            </div>
-                        </div>
-                        <a href="#" class="nav-link text-dark font-weight-bold"><i class="fa fa-key pr-2"></i> Change
-                            Password</a>
-                        <hr class="my-1 color-light">
-                        <a href="#" class="nav-link text-dark font-weight-bold"><i
-                                class="fas fa-sign-out-alt pr-3"></i>Log
-                            Out</a>
+            <nav class="navbar mb-2 navbar-light bg-light mb-2">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" id="sidebar-toggle" onclick="hideSidebar()" class="btn btn-info navbar-btn mr-auto">
+                            <i class="fa fa-bars" aria-hidden="true"></i>
+                        </button>
                     </div>
+                    <!-- <span class="ml-auto mr-2 font-weight-bold" style="font-size: 20px;">Jawad Shah</span> -->
+                    <a class="text-decoration-none">
+                        <img src="../assets/user-profile.jpg" id="user-profile" onclick="showDropdown()" width="40" height="40" class="rounded-circle ml-auto" alt="">
+                        <div class="card p-2 bg-white shadow" id="dropdown">
+                            <div class="useinfo p-2 mb-2 d-flex">
+                                <div>
+                                    <img src="../assets/user-icon.png" class="rounded-circle mr-3" width="50" height="50">
+                                </div>
+                                <div>
+                                    <div class="text-primary font-weight-bold" id="username" style="font-size: 18px;">Syed Ali Jawad
+                                    </div>
+                                    <div class="text-dark font-weight-bold" id="user-id" style="font-size: 14px;">Admin</div>
+                                </div>
+                            </div>
+                            <a href="#" class="nav-link text-dark font-weight-bold"><i class="fa fa-key pr-2"></i> Change
+                                Password</a>
+                            <hr class="my-1 color-light">
+                            <a href="#" class="nav-link text-dark font-weight-bold"><i
+                                    class="fas fa-sign-out-alt pr-3"></i>Log
+                                Out</a>
+                        </div>
+                    </a>
                 </div>
-
-
             </nav>
 
             <div class="card bg-white mb-2 p-4 rounded-0" id="content-wrapper">
