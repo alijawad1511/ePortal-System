@@ -5,26 +5,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Registration</title>
+    <title>Manage Teachers</title>
 
-    <script src="https://kit.fontawesome.com/248b31097f.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-    <!-- External CSS Link -->
-    <link rel="stylesheet" href="css/style.css">
-    <script src="js/student_registration.js"></script>
+    <?php include 'links.php'; ?>
+    <script src="../js/teacher_registration.js"></script>
 
 </head>
 
 <body>
 
+    <?php include 'DBManager.php' ?>
+    
+    
+    
     <!-- Wrapper Start -->
-
-
-
     <div class="wrapper">
 
         <!-- Sidebar Start -->
@@ -32,45 +26,60 @@
 
             <!-- User -->
             <a href="#" id="logo-container">
-                <img class="mt-3 ml-4" src="img/logo1.png" alt="Logo" width="180">
+                <img class="mt-3 ml-4" src="../assets/logo/logo1.png" alt="Logo" width="180">
             </a>
             <hr class="my-3 sidebar-separator" style="background-color: rgba(255, 255, 255, 0.562);">
 
             <!-- Navigation -->
             <ul>
-                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="admin_dashboard.html">
+                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="admin_dashboard.php">
                         <i class="fas fa-tachometer-alt ml-1 mr-2"></i>
                         Dashboard
                     </a>
                 </li>
-                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="manage_teachers.html">
+                <li><a class="nav-link text-white font-weight-bold px-3 py-3 active" href="manage_teachers.php">
                         <i class="fas fa-chalkboard-teacher ml-1 mr-2"></i>
                         Teachers
                     </a>
                 </li>
-                <li><a class="nav-link text-white font-weight-bold px-3 py-3 active" href="">
+                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="manage_students.php">
                         <i class="fas fa-user-graduate ml-1 mr-2"></i>
                         Students
                     </a>
                 </li>
-                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="#">
+                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="manage_parents.php">
                         <i class="fa fa-group ml-1 mr-2"></i>
                         Parents
                     </a>
                 </li>
                 <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="#">
-                        <i class="fas fa-copy ml-1 mr-2"></i>
-                        Examination
+                        <i class="fas fa-book ml-1 mr-2"></i>
+                        Subjects
                     </a>
                 </li>
                 <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="#">
                         <i class="fas fa-award ml-1 mr-2"></i>
+                        Assessments
+                    </a>
+                </li>
+                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="#">
+                        <i class="fa fa-chart-bar ml-1 mr-2"></i>
                         Results
                     </a>
                 </li>
                 <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="#">
-                        <i class="fa fa-cog ml-1 mr-2"></i>
-                        Settings
+                        <i class="fa fa-money-check-alt ml-1 mr-2"></i>
+                        Payments
+                    </a>
+                </li>
+                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="#">
+                        <i class="fas fa-users ml-1 mr-2"></i>
+                        Admins
+                    </a>
+                </li>
+                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="#">
+                        <i class="fas fa-copy ml-1 mr-2"></i>
+                        Accounts
                     </a>
                 </li>
             </ul>
@@ -95,7 +104,7 @@
 
                 <div class="ml-auto">
                     <span class="font-weight-bold mr-1" style="font-size: 18px;">Admin</span>
-                    <img src="img/user-profile.jpg" id="user-profile" width="40" height="40" class="rounded-circle"
+                    <img src="../assets/user-profile.jpg" id="user-profile" width="40" height="40" class="rounded-circle"
                         alt="">
                     <div class="card p-2 bg-white shadow" id="dropdown">
                         <div class="useinfo p-2 mb-2 d-flex">
@@ -121,14 +130,14 @@
             </nav>
 
             <div class="card bg-white mb-2 p-4 rounded-0" id="content-wrapper">
-                <h2 class="main-heading text-secondary"><b>Students</b></h2>
+                <h2 class="main-heading text-secondary"><b>Teachers</b></h2>
                 <hr class="divider py-2">
 
                 <div class="clearfix class-container p-3 border mb-3">
-                    <a href="student_registration.php" class="btn btn-success float-left"><i
-                            class="fas fa-user-plus mr-1"></i>Add Student</a>
+                    <a href="../templates/teacher_registration.html" class="btn btn-success float-left"><i
+                            class="fas fa-user-plus mr-1"></i>Add Teacher</a>
                     <form action="#" method="GET" class="form-inline ml-auto float-right">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search Student Here..."
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search Here..."
                             aria-label="Search">
                         <button class="btn btn-outline-primary my-2 my-sm-0" onclick="validateSearch()" type="submit"
                             name="search">Search</button>
@@ -142,25 +151,44 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Name</th>
-                                <th>Class</th>
-                                <th>Section</th>
                                 <th>Email</th>
                                 <th>Contact</th>
-                                <th colspan="3">Action</th>
+                                <th>Subject</th>
+                                <th>Qualification</th>
+                                <th>View</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>2</td>
-                                <td>Ammar</td>
-                                <td>Nine</td>
-                                <td>A</td>
-                                <td>ammar.shah@gmail.com</td>
-                                <td>03001234567</td>
-                                <td><i style="color: green;" class="fas fa-eye"></i></td>
-                                <td><i style="color: rgb(34, 119, 230);" class="far fa-edit"></i></td>
-                                <td><i style="color: red;" class="fas fa-trash"></i></td>
-                            </tr>
+                            <?php
+                                $query = "SELECT * from teachers";
+                                $result = mysqli_query($connection,$query);
+                                $noOfRows = mysqli_num_rows($result);
+
+
+                                if($noOfRows>0){
+
+                                    while($teacher = mysqli_fetch_array($result)){  ?>
+                                        <tr>
+                                        <td><?php echo $teacher['teacher_id']; ?></td>
+                                        <td><?php echo $teacher['first_name']." ".$teacher['last_name']; ?></td>
+                                        <td><?php echo $teacher['email']; ?></td>
+                                        <td><?php echo $teacher['mobile_number']; ?></td>
+                                        <td><?php echo $teacher['subject']; ?></td>
+                                        <td><?php echo $teacher['qualification']; ?></td>
+                                        <td class="text-center"><a href="#" class="text-decoration-none"><i style="color: green;" class="fas fa-eye"></i></a></td>
+                                        <td class="text-center"><a href="edit_teacher.php?id=<?php echo $teacher['teacher_id']; ?>" class="text-decoration-none"><i style="color: rgb(34, 119, 230);" class="far fa-edit"></i></a></td>
+                                        <td class="text-center"><a href="#" class="text-decoration-none"><i style="color: red;" class="fas fa-trash"></i></a></td>
+                                        </tr>
+                                   
+                                 <?php
+
+                                    } // while Loop closing
+                                }  // If closing
+
+                            ?>
+
                         </tbody>
                     </table>
                 </div>

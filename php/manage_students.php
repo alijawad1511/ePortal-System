@@ -5,17 +5,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Manage Students</title>
 
-    <?php include 'links.php' ?>
+    <?php include 'links.php'; ?>
+    <script src="../js/logout_dropdown.js"></script>
+    <script src="../js/sidebar_showhide.js"></script>
+    <script src="../js/student_registration.js"></script>
+
 </head>
 
 <body>
 
+    <?php include 'DBManager.php' ?>
+    
+    
     <!-- Wrapper Start -->
-
-
-
     <div class="wrapper">
 
         <!-- Sidebar Start -->
@@ -29,17 +33,17 @@
 
             <!-- Navigation -->
             <ul>
-                <li><a class="nav-link text-white font-weight-bold px-3 py-3 active">
+                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="admin_dashboard.html">
                         <i class="fas fa-tachometer-alt ml-1 mr-2"></i>
                         Dashboard
                     </a>
                 </li>
-                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="manage_teachers.php">
+                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="manage_teachers.html">
                         <i class="fas fa-chalkboard-teacher ml-1 mr-2"></i>
                         Teachers
                     </a>
                 </li>
-                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="manage_students.php">
+                <li><a class="nav-link text-white font-weight-bold px-3 py-3 active" href="">
                         <i class="fas fa-user-graduate ml-1 mr-2"></i>
                         Students
                     </a>
@@ -95,7 +99,7 @@
                             <i class="fa fa-bars" aria-hidden="true"></i>
                         </button>
                     </div>
-                    <span class="ml-auto mr-2 font-weight-bold" style="font-size: 20px;">Jawad Shah</span>
+                    <!-- <span class="ml-auto mr-2 font-weight-bold" style="font-size: 20px;">Jawad Shah</span> -->
                     <a class="text-decoration-none">
                         <img src="../assets/user-profile.jpg" id="user-profile" onclick="showDropdown()" width="40" height="40" class="rounded-circle ml-auto" alt="">
                         <div class="card p-2 bg-white shadow" id="dropdown">
@@ -106,7 +110,7 @@
                                 <div>
                                     <div class="text-primary font-weight-bold" id="username" style="font-size: 18px;">Syed Ali Jawad
                                     </div>
-                                    <div class="text-dark font-weight-bold" id="user-id" style="font-size: 14px;">F2019266282</div>
+                                    <div class="text-dark font-weight-bold" id="user-id" style="font-size: 14px;">Admin</div>
                                 </div>
                             </div>
                             <a href="#" class="nav-link text-dark font-weight-bold"><i class="fa fa-key pr-2"></i> Change
@@ -120,70 +124,73 @@
                 </div>
             </nav>
 
+            <div class="card bg-white mb-2 p-4 rounded-0" id="content-wrapper">
+                <h2 class="main-heading text-secondary"><b>Students</b></h2>
+                <hr class="divider py-2">
 
-            <div class="card mb-2 p-4">
-                <h2><b>Admin Dashboard</b></h2>
+                <div class="clearfix class-container p-3 border mb-3">
+                    <a href="student_registration.php" class="btn btn-success float-left"><i
+                            class="fas fa-user-plus mr-1"></i>Add Student</a>
+                    <form action="#" method="GET" class="form-inline ml-auto float-right">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search Student Here..."
+                            aria-label="Search">
+                        <button class="btn btn-outline-primary my-2 my-sm-0" onclick="validateSearch()" type="submit"
+                            name="search">Search</button>
+                    </form>
+                </div>
+
+
+                <div class="card table-container overflow-auto bg-light border">
+                    <table class="table table-responsive-lg table-responsive-md table-responsive-sm table-hover">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Class</th>
+                                <th>Section</th>
+                                <th>Email</th>
+                                <th>Contact</th>
+                                <th>View</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            $query = "SELECT * from students";
+                            $result = mysqli_query($connection,$query);
+                            $noOfRows = mysqli_num_rows($result);
+
+
+                            if($noOfRows>0){
+
+                                while($student = mysqli_fetch_array($result)){  ?>
+                                    <tr>
+                                    <td><?php echo $student['student_id']; ?></td>
+                                    <td><?php echo $student['first_name']." ".$student['last_name']; ?></td>
+                                    <td><?php echo $student['class_name']; ?></td>
+                                    <td><?php echo 'A'; ?></td>
+                                    <td><?php echo $student['email']; ?></td>
+                                    <td><?php echo $student['mobile_number']; ?></td>
+                                    <td class="text-center"><a href="admin_view_student.php?id=<?php echo $student['student_id'];?>"><i style="color: green;" class="fas fa-eye"></i></a></td>
+                                    <td class="text-center"><a href="edit_student.php?id=<?php echo $student['student_id'];?>"><i style="color: rgb(34, 119, 230);" class="far fa-edit"></i></a></td>
+                                    <td class="text-center"><a href="delete_student.php?id=<?php echo $student['student_id'];?>"><i style="color: red;" class="fas fa-trash"></i></a></td>
+                                    </tr>
+                               
+                             <?php
+
+                                } // while Loop closing
+                            }  // If closing
+
+                        ?>
+                        </tbody>
+                    </table>
+                </div>
+
+
             </div>
 
-            <div class="card bg-white mb-2 p-3 d-flex flex-row flex-wrap justify-content-around" id="content-wrapper">
-                <a href="manage_students.php">
-                    <div class="card mb-4 p-3 shadow widget-card d-flex text-center text-primary">
-                        <div class="heading mb-3">Students</div>
-                        <div><i class="fas fa-user-graduate"></i></div>
-                    </div>
-                </a>
-                <a href="manage_teachers.php">
-                    <div class="card mb-4 p-3 shadow widget-card d-flex text-center text-warning">
-                        <div class="heading mb-3">Teachers</div>
-                        <div><i class="fas fa-chalkboard-teacher"></i></div>
-                    </div>
-                </a>
-                <a href="manage_parents.php">
-                    <div class="card mb-4 p-3 shadow widget-card d-flex text-center text-secondary">
-                        <div class="heading mb-3">Parents</div>
-                        <div><i class="fa fa-group"></i></div>
-                    </div>
-                </a>
-                <a href="manage_subjects.php">
-                    <div class="card mb-4 p-3 shadow widget-card d-flex text-center text-info">
-                        <div class="heading mb-3">Subjects</div>
-                        <div><i class="fas fa-book"></i></div>
-                    </div>
-                </a>
-                <a href="#">
-                    <div class="card mb-4 p-3 shadow widget-card d-flex text-center text-success">
-                        <div class="heading mb-3">Assessments</div>
-                        <div><i class="fas fa-award"></i></div>
-                    </div>
-                </a>
-                <a href="#">
-                    <div class="card mb-4 p-3 shadow widget-card d-flex text-center text-danger">
-                        <div class="heading mb-3">Results</div>
-                        <div><i class="fa fa-chart-bar"></i></div>
-                    </div>
-                </a>
-                <a href="#">
-                    <div class="card mb-4 p-3 shadow widget-card d-flex text-center text-secondary">
-                        <div class="heading mb-3">Payments</div>
-                        <div><i class="fas fa-money-check-alt"></i></div>
-                    </div>
-                </a>
-                <a href="#">
-                    <div class="card mb-4 p-3 shadow widget-card d-flex text-center text-primary">
-                        <div class="heading mb-3">Admins</div>
-                        <div><i class="fas fa-users"></i></div>
-                    </div>
-                </a>
-                <a href="#">
-                    <div class="card mb-4 p-3 shadow widget-card d-flex text-center text-info">
-                        <div class="heading mb-3">Accounts</div>
-                        <div><i class="fas fa-copy"></i></div>
-                    </div>
-                </a>
-
-            </div>
-
-            <div class="card p-4 bg-white" id="footer">
+            <div class="card p-4 bg-white rounded-0" id="footer">
                 Developed by : <b>Syed Ali Jawad Bukhari</b>
             </div>
 
@@ -195,48 +202,6 @@
 
     </div>
     <!-- Wrapper End     -->
-
-    <script>
-
-
-        // Show/Hide Sidebar
-        let hideNavbar = false;
-
-        function hideSidebar() {
-
-            if (hideNavbar == false) {
-                document.getElementById('sidebar').style.marginLeft = "-250px";
-                document.getElementById('content').style.marginLeft = "0";
-                hideNavbar = true;
-            }
-            else {
-                document.getElementById('sidebar').style.marginLeft = "0";
-                document.getElementById('content').style.marginLeft = "250px";
-                hideNavbar = false;
-            }
-
-        }
-
-
-        // Logout Dropdown
-        var flag = false;
-
-        function showDropdown(){
-            console.log('Hello');
-            if(flag==false){
-                document.getElementById('dropdown').style.display = "block";
-                flag = true;
-            }else{
-                document.getElementById('dropdown').style.display = "none";
-                flag = false;
-            }
-        }
-
-
-
-
-
-    </script>
 
 </body>
 

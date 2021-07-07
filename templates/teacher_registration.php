@@ -7,15 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Teacher Registration</title>
 
-    <script src="https://kit.fontawesome.com/248b31097f.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-    <!-- External CSS Link -->
-    <link rel="stylesheet" href="css/style.css">
-    <script src="js/teacher_registration.js"></script>
+    <?php include 'links.php' ?>  
+    <script src="../js/teacher_registration.js"></script>
 
 </head>
 
@@ -32,7 +25,7 @@
 
             <!-- User -->
             <a href="#" id="logo-container">
-                <img class="mt-3 ml-4" src="img/logo1.png" alt="Logo" width="180">
+                <img class="mt-3 ml-4" src="../assets/logo/logo1.png" alt="Logo" width="180">
             </a>
             <hr class="my-3 sidebar-separator" style="background-color: rgba(255, 255, 255, 0.562);">
 
@@ -95,7 +88,7 @@
 
                 <div class="ml-auto">
                     <span class="font-weight-bold mr-1" style="font-size: 18px;">Admin</span>
-                    <img src="img/user-profile.jpg" id="user-profile" width="40" height="40" class="rounded-circle"
+                    <img src="../assets/user-profile.jpg" id="user-profile" width="40" height="40" class="rounded-circle"
                         alt="">
                     <div class="card p-2 bg-white shadow" id="dropdown">
                         <div class="useinfo p-2 mb-2 d-flex">
@@ -125,7 +118,7 @@
                 <hr class="divider py-2">
 
                 <!-- Form Start -->
-                <form action="php/add_teacher.php" method="POST" onsubmit="return validateTeacherRegistration()">
+                <form action="add_teacher.php" method="POST" onsubmit="return validateTeacherRegistration()">
 
                     <div class="px-5 py-3 mb-5 border" id="personal-info">
 
@@ -180,8 +173,7 @@
                         <div class="form-group my-2">
                             <label for="gender" class="mr-5">Gender</label>
                             <div class="form-check-inline">
-                                <input class="form-check-input" type="radio" name="gender" id="maleOption" value="m"
-                                    checked>
+                                <input class="form-check-input" type="radio" name="gender" id="maleOption" value="m">
                                 <label class="form-check-label font-weight-normal" for="maleOption">
                                     Male
                                 </label>

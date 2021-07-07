@@ -21,7 +21,11 @@
 
         $studentID = $_GET['id'];
 
-        $query = "SELECT T.first_name,T.last_name,T.mobile_number,T.email,T.gender,T.qualification,T.subject,C.class_name,C.section from Teachers AS T,classes AS C, students as S WHERE student_id = '$studentID' and C.class_name = S.class_name and T.teacher_id = C.incharge_id";
+        $query = "SELECT * from Students WHERE student_id = $studentID";
+        $result = mysqli_query($connection,$query);
+        $studentInfo = mysqli_fetch_array($result);
+
+        $query = "SELECT T.first_name,T.last_name,T.mobile_number,T.email,T.gender,T.qualification,T.subject,C.class_name,C.section from Teachers AS T,classes AS C, students as S WHERE student_id = $studentID and C.class_name = S.class_name and T.teacher_id = C.incharge_id";
         $result = mysqli_query($connection,$query);
         $teacherInfo = mysqli_fetch_array($result);
 
@@ -63,7 +67,7 @@
                         Subjects
                     </a>
                 </li>
-                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="#">
+                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="assessments_info.php?id=<?php echo $studentID; ?>">
                         <i class="fas fa-award ml-1 mr-2"></i>
                         Assessments
                     </a>

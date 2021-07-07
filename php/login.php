@@ -1,5 +1,4 @@
 <?php
-
 include 'DBManager.php';
 
 if(isset($_POST['submit'])){
@@ -16,8 +15,11 @@ if(isset($_POST['submit'])){
         header("Location: http://localhost/ePortal-System/php/admin_dashboard.php",true,301);
     }else if(identifyUser($email,$password)==1){
         header("Location: http://localhost/ePortal-System/php/teacher_dashboard.php",true,301);
-    }else if(identifyUser($email,$password)==2){
-        header("Location: http://localhost/ePortal-System/php/student_dashboard.php",true,301);
+    }else if(identifyUser($email,$password)==2){ 
+        // print_r($currentUser['student_id']);
+        $studentID = $currentUser['student_id'];
+        header("Location: student_dashboard.php?id='$studentID'"); 
+        // header("Location: http://localhost/ePortal-System/php/student_dashboard.php",true,301);
     }
     
 }

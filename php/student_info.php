@@ -63,7 +63,7 @@
                         Subjects
                     </a>
                 </li>
-                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="#">
+                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="assessments_info.php?id=<?php echo $studentID; ?>">
                         <i class="fas fa-award ml-1 mr-2"></i>
                         Assessments
                     </a>
