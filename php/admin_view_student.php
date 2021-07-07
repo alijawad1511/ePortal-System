@@ -44,7 +44,7 @@
 
             <!-- Navigation -->
             <ul>
-                <li><a class="nav-link text-white font-weight-bold px-3 py-3 active">
+                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="manage_students.php">
                         <i class="fas fa-tachometer-alt ml-1 mr-2"></i>
                         Dashboard
                     </a>
@@ -54,7 +54,7 @@
                         Teachers
                     </a>
                 </li>
-                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="manage_students.php">
+                <li><a class="nav-link text-white font-weight-bold px-3 py-3 active" href="manage_students.php">
                         <i class="fas fa-user-graduate ml-1 mr-2"></i>
                         Students
                     </a>

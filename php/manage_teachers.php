@@ -10,6 +10,7 @@
     <?php include 'links.php'; ?>
     <script src="../js/logout_dropdown.js"></script>
     <script src="../js/sidebar_showhide.js"></script>
+    <script src="../js/tableSearch.js"></script>
     <script src="../js/teacher_registration.js"></script>
     
 
@@ -134,7 +135,7 @@
                     <a href="../templates/teacher_registration.html" class="btn btn-success float-left"><i
                             class="fas fa-user-plus mr-1"></i>Add Teacher</a>
                     <form action="#" method="GET" class="form-inline ml-auto float-right">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search Here..."
+                        <input class="form-control mr-sm-2" type="search" onkeyup="myFunction()" id="search-keyword" placeholder="Search Here..."
                             aria-label="Search">
                         <button class="btn btn-outline-primary my-2 my-sm-0" onclick="validateSearch()" type="submit"
                             name="search">Search</button>
@@ -143,7 +144,7 @@
 
 
                 <div class="card table-container overflow-auto bg-light border">
-                    <table class="table table-responsive-lg table-responsive-md table-responsive-sm table-hover">
+                    <table class="table table-responsive-lg table-responsive-md table-responsive-sm table-hover" id="table">
                         <thead class="thead-dark">
                             <tr>
                                 <th>ID</th>
