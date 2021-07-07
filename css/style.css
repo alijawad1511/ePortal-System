@@ -49,6 +49,12 @@
     font-size: 18px;
 }
 
+#user-profile:hover{
+    cursor: pointer;
+    transform: scale(1.08,1.08);
+    transition: 0.5s;
+}
+
 #dropdown{
     display: none;
     width: 300px;
@@ -59,14 +65,8 @@
     transition: 1s;
 }
 
-#user-profile:hover{
-    cursor: pointer;
-    transform: scale(1.08,1.08);
-    transition: 0.5s;
-}
-
-#user-profile:hover #dropdown{
-    display: block;
+#dropdown a{
+    text-decoration: none;
 }
 
 #dropdown a:hover{

@@ -7,15 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
 
-    <script src="https://kit.fontawesome.com/248b31097f.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-    <!-- External CSS Link -->
-    <link rel="stylesheet" href="css/style.css">
-
+    <?php include 'links.php' ?>
+    <script src="../js/logout_dropdown.js"></script>
+    <script src="../js/sidebar_showhide.js"></script>
+    
 </head>
 
 <body>
@@ -31,7 +26,7 @@
 
             <!-- User -->
             <a href="#" id="logo-container">
-                <img class="mt-3 ml-4" src="img/logo1.png" alt="Logo" width="180">
+                <img class="mt-3 ml-4" src="../assets/logo/logo1.png" alt="Logo" width="180">
             </a>
             <hr class="my-3 sidebar-separator" style="background-color: rgba(255, 255, 255, 0.562);">
 
@@ -42,34 +37,49 @@
                         Dashboard
                     </a>
                 </li>
-                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="php/manage_teachers.php">
+                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="manage_teachers.php">
                         <i class="fas fa-chalkboard-teacher ml-1 mr-2"></i>
                         Teachers
                     </a>
                 </li>
-                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="php/manage_students.php">
+                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="manage_students.php">
                         <i class="fas fa-user-graduate ml-1 mr-2"></i>
                         Students
                     </a>
                 </li>
-                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="#">
+                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="manage_parents.php">
                         <i class="fa fa-group ml-1 mr-2"></i>
                         Parents
                     </a>
                 </li>
                 <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="#">
-                        <i class="fas fa-copy ml-1 mr-2"></i>
-                        Examination
+                        <i class="fas fa-book ml-1 mr-2"></i>
+                        Subjects
                     </a>
                 </li>
                 <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="#">
                         <i class="fas fa-award ml-1 mr-2"></i>
+                        Assessments
+                    </a>
+                </li>
+                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="#">
+                        <i class="fa fa-chart-bar ml-1 mr-2"></i>
                         Results
                     </a>
                 </li>
                 <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="#">
-                        <i class="fa fa-cog ml-1 mr-2"></i>
-                        Settings
+                        <i class="fa fa-money-check-alt ml-1 mr-2"></i>
+                        Payments
+                    </a>
+                </li>
+                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="#">
+                        <i class="fas fa-users ml-1 mr-2"></i>
+                        Admins
+                    </a>
+                </li>
+                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="#">
+                        <i class="fas fa-copy ml-1 mr-2"></i>
+                        Accounts
                     </a>
                 </li>
             </ul>
@@ -88,18 +98,18 @@
                             <i class="fa fa-bars" aria-hidden="true"></i>
                         </button>
                     </div>
-                    <span class="ml-auto mr-2 font-weight-bold" style="font-size: 20px;">Jawad Shah</span>
+                    <!-- <span class="ml-auto mr-2 font-weight-bold" style="font-size: 20px;">Jawad Shah</span> -->
                     <a class="text-decoration-none">
-                        <img src="assets/user-profile.jpg" id="user-profile" onclick="showDropdown()" width="40" height="40" class="rounded-circle ml-auto" alt="">
+                        <img src="../assets/user-profile.jpg" id="user-profile" onclick="showDropdown()" width="40" height="40" class="rounded-circle ml-auto" alt="">
                         <div class="card p-2 bg-white shadow" id="dropdown">
                             <div class="useinfo p-2 mb-2 d-flex">
                                 <div>
-                                    <img src="img/user-icon.png" class="rounded-circle mr-3" width="50" height="50">
+                                    <img src="../assets/user-icon.png" class="rounded-circle mr-3" width="50" height="50">
                                 </div>
                                 <div>
                                     <div class="text-primary font-weight-bold" id="username" style="font-size: 18px;">Syed Ali Jawad
                                     </div>
-                                    <div class="text-dark font-weight-bold" id="user-id" style="font-size: 14px;">F2019266282</div>
+                                    <div class="text-dark font-weight-bold" id="user-id" style="font-size: 14px;">Admin</div>
                                 </div>
                             </div>
                             <a href="#" class="nav-link text-dark font-weight-bold"><i class="fa fa-key pr-2"></i> Change
@@ -119,25 +129,25 @@
             </div>
 
             <div class="card bg-white mb-2 p-3 d-flex flex-row flex-wrap justify-content-around" id="content-wrapper">
-                <a href="php/manage_students.php">
+                <a href="manage_students.php">
                     <div class="card mb-4 p-3 shadow widget-card d-flex text-center text-primary">
                         <div class="heading mb-3">Students</div>
                         <div><i class="fas fa-user-graduate"></i></div>
                     </div>
                 </a>
-                <a href="php/manage_teachers.php">
+                <a href="manage_teachers.php">
                     <div class="card mb-4 p-3 shadow widget-card d-flex text-center text-warning">
                         <div class="heading mb-3">Teachers</div>
                         <div><i class="fas fa-chalkboard-teacher"></i></div>
                     </div>
                 </a>
-                <a href="php/manage_parents.php">
+                <a href="manage_parents.php">
                     <div class="card mb-4 p-3 shadow widget-card d-flex text-center text-secondary">
                         <div class="heading mb-3">Parents</div>
                         <div><i class="fa fa-group"></i></div>
                     </div>
                 </a>
-                <a href="php/manage_subjects.php">
+                <a href="manage_subjects.php">
                     <div class="card mb-4 p-3 shadow widget-card d-flex text-center text-info">
                         <div class="heading mb-3">Subjects</div>
                         <div><i class="fas fa-book"></i></div>
@@ -188,48 +198,6 @@
 
     </div>
     <!-- Wrapper End     -->
-
-    <script>
-
-
-        // Show/Hide Sidebar
-        let hideNavbar = false;
-
-        function hideSidebar() {
-
-            if (hideNavbar == false) {
-                document.getElementById('sidebar').style.marginLeft = "-250px";
-                document.getElementById('content').style.marginLeft = "0";
-                hideNavbar = true;
-            }
-            else {
-                document.getElementById('sidebar').style.marginLeft = "0";
-                document.getElementById('content').style.marginLeft = "250px";
-                hideNavbar = false;
-            }
-
-        }
-
-
-        // Logout Dropdown
-        var flag = false;
-
-        function showDropdown(){
-            console.log('Hello');
-            if(flag==false){
-                document.getElementById('dropdown').style.display = "block";
-                flag = true;
-            }else{
-                document.getElementById('dropdown').style.display = "none";
-                flag = false;
-            }
-        }
-
-
-
-
-
-    </script>
 
 </body>
 

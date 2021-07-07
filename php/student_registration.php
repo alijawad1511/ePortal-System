@@ -7,7 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Registration</title>
 
-    <?php include '\php\links.php' ?>
+    <?php include 'links.php'; ?>
+    <script src="../js/student_registration.js"></script>
+    <script src="../js/sidebar_showhide.js"></script>
+    <script src="../js/logout_dropdown.js"></script>
 
 </head>
 
@@ -24,18 +27,18 @@
 
             <!-- User -->
             <a href="#" id="logo-container">
-                <img class="mt-3 ml-4" src="img/logo1.png" alt="Logo" width="180">
+                <img class="mt-3 ml-4" src="../assets/logo/logo1.png" alt="Logo" width="180">
             </a>
             <hr class="my-3 sidebar-separator" style="background-color: rgba(255, 255, 255, 0.562);">
 
             <!-- Navigation -->
             <ul>
-                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="admin_dashboard.html">
+                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="admin_dashboard.php">
                         <i class="fas fa-tachometer-alt ml-1 mr-2"></i>
                         Dashboard
                     </a>
                 </li>
-                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="manage_teachers.html">
+                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="manage_teachers.php">
                         <i class="fas fa-chalkboard-teacher ml-1 mr-2"></i>
                         Teachers
                     </a>
@@ -45,24 +48,39 @@
                         Students
                     </a>
                 </li>
-                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="#">
+                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="manage_parents.php">
                         <i class="fa fa-group ml-1 mr-2"></i>
                         Parents
                     </a>
                 </li>
                 <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="#">
-                        <i class="fas fa-copy ml-1 mr-2"></i>
-                        Examination
+                        <i class="fas fa-book ml-1 mr-2"></i>
+                        Subjects
                     </a>
                 </li>
                 <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="#">
                         <i class="fas fa-award ml-1 mr-2"></i>
+                        Assessments
+                    </a>
+                </li>
+                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="#">
+                        <i class="fa fa-chart-bar ml-1 mr-2"></i>
                         Results
                     </a>
                 </li>
                 <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="#">
-                        <i class="fa fa-cog ml-1 mr-2"></i>
-                        Settings
+                        <i class="fa fa-money-check-alt ml-1 mr-2"></i>
+                        Payments
+                    </a>
+                </li>
+                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="#">
+                        <i class="fas fa-users ml-1 mr-2"></i>
+                        Admins
+                    </a>
+                </li>
+                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="#">
+                        <i class="fas fa-copy ml-1 mr-2"></i>
+                        Accounts
                     </a>
                 </li>
             </ul>
@@ -74,43 +92,36 @@
         <div id="content" class="overflow-auto">
 
             <!-- Top Navbar -->
-            <nav class="navbar navbar-expand-lg navbar-light bg-light mb-2">
-
-                <button class="btn" id="sidebar-toggler" onclick="hideSidebar()"><span
-                        class="navbar-toggler-icon"></span></button>
-
-                <!-- <span class="p-2 ml-4" style="font-size: 18px;"><b>News</b></span> -->
-                <!-- <div class="border p-1 pt-2 ml-2 d-md-block d-none col-lg-8 col-md-8 " id="topbar-news">
-                    <marquee class="txt" direction="left" onmouseover="stop" onmouseout="start">This is an ePortal
-                        System created by our Group for Web Technologies.</marquee>
-                </div> -->
-
-                <div class="ml-auto">
-                    <span class="font-weight-bold mr-1" style="font-size: 18px;">Admin</span>
-                    <img src="img/user-profile.jpg" id="user-profile" width="40" height="40" class="rounded-circle"
-                        alt="">
-                    <div class="card p-2 bg-white shadow" id="dropdown">
-                        <div class="useinfo p-2 mb-2 d-flex">
-                            <div>
-                                <img src="img/user-icon.png" class="rounded-circle mr-3" width="50" height="50">
-                            </div>
-                            <div>
-                                <div class="font-weight-bold" id="username" style="font-size: 18px;">Syed Ali Jawad
-                                </div>
-                                <div class="" id="user-id" style="font-size: 14px;">F2019266282</div>
-                            </div>
-                        </div>
-                        <a href="#" class="nav-link text-dark font-weight-bold"><i class="fa fa-key pr-2"></i> Change
-                            Password</a>
-                        <hr class="my-1 color-light">
-                        <a href="#" class="nav-link text-dark font-weight-bold"><i
-                                class="fas fa-sign-out-alt pr-3"></i>Log
-                            Out</a>
+            <nav class="navbar mb-2 navbar-light bg-light mb-2">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" id="sidebar-toggle" onclick="hideSidebar()" class="btn btn-info navbar-btn mr-auto">
+                            <i class="fa fa-bars" aria-hidden="true"></i>
+                        </button>
                     </div>
+                    <!-- <span class="ml-auto mr-2 font-weight-bold" style="font-size: 20px;">Jawad Shah</span> -->
+                    <a class="text-decoration-none">
+                        <img src="../assets/user-profile.jpg" id="user-profile" onclick="showDropdown()" width="40" height="40" class="rounded-circle ml-auto" alt="">
+                        <div class="card p-2 bg-white shadow" id="dropdown">
+                            <div class="useinfo p-2 mb-2 d-flex">
+                                <div>
+                                    <img src="../assets/user-icon.png" class="rounded-circle mr-3" width="50" height="50">
+                                </div>
+                                <div>
+                                    <div class="text-primary font-weight-bold" id="username" style="font-size: 18px;">Syed Ali Jawad
+                                    </div>
+                                    <div class="text-dark font-weight-bold" id="user-id" style="font-size: 14px;">Admin</div>
+                                </div>
+                            </div>
+                            <a href="#" class="nav-link text-dark font-weight-bold"><i class="fa fa-key pr-2"></i> Change
+                                Password</a>
+                            <hr class="my-1 color-light">
+                            <a href="#" class="nav-link text-dark font-weight-bold"><i
+                                    class="fas fa-sign-out-alt pr-3"></i>Log
+                                Out</a>
+                        </div>
+                    </a>
                 </div>
-
-
-
             </nav>
 
             <div class="card bg-white mb-2 p-4 rounded-0" id="content-wrapper">
@@ -118,7 +129,7 @@
                 <hr class="divider py-2">
 
                 <!-- Form Start -->
-                <form action="php/add_student.php" method="POST" onsubmit="return validateStudentRegistration()">
+                <form action="add_student.php" method="POST" onsubmit="return validateStudentRegistration()">
 
                     <div class="px-5 py-3 mb-5 border" id="personal-info">
 
@@ -173,14 +184,13 @@
                         <div class="form-group my-2">
                             <label for="gender" class="mr-5">Gender</label>
                             <div class="form-check-inline">
-                                <input class="form-check-input" type="radio" name="gender" id="maleOption" value="m"
-                                    checked>
-                                <label class="form-check-label font-weight-normal" for="maleOption">
+                                <input class="form-check-input" type="radio" name="gender" id="maleOption" value="Male">
+                                <label class="form-check-label font-weight-normal">
                                     Male
                                 </label>
                             </div>
                             <div class="form-check-inline">
-                                <input class="form-check-input" type="radio" name="gender" id="femaleOption" value="f">
+                                <input class="form-check-input" type="radio" name="gender" id="femaleOption" value="Female">
                                 <label class="form-check-label font-weight-normal" for="femaleOption">
                                     Female
                                 </label>
@@ -210,7 +220,7 @@
 
                         <div class="form-group">
                                 <label for="">Blood Group</label>
-                                <select class="form-control" name="studentClass" id="studentClass" required>
+                                <select class="form-control" name="bloodGroup" id="bloodGroup" required>
                                     <option value="">--Select Your Blood Group--</option>
                                     <option value="A+">A+</option>
                                     <option value="A-">A-</option>
@@ -312,7 +322,7 @@
 
                     </div>
 
-                    <button type="submit" class="btn btn-primary w-100">Register</button>
+                    <button type="submit" class="btn btn-primary w-100" name='submit'>Register</button>
 
                 </form>
 

@@ -1,4 +1,8 @@
+// Sidebar Show Hide functionality
+<script src="sidebar_showhide.js"></script>
 
+
+// Validation Function
 function validateTeacherRegistration(){
 
     var firstName = document.getElementById('firstName').value;
