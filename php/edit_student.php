@@ -171,7 +171,7 @@
                         <div class="clearfix class-container">
                             <div class="form-group float-left">
                                 <label for="">Class</label>
-                                <select class="form-control" name="studentClass" id="studentClass" required>
+                                <select class="form-control" name="studentClass" id="studentClass" required disabled>
                                     <option value="">--Select Your Class--</option>
                                     <option value="Nursery"
                                     <?php
@@ -262,8 +262,8 @@
                             </div>
                             <div class="form-group float-right">
                                 <label for="firstName">Section</label>
-                                <select class="form-control" name="section" id="section" required>
-                                    <option value="">--Select Class--</option>
+                                <select class="form-control" name="section" id="section" required disabled>
+                                    <option value="">--Select Section--</option>
                                     <option value="A"
                                     <?php
                                         if($classData['section']=="A"){
@@ -422,7 +422,7 @@
                             </div>
                             <div class="form-group float-right">
                                 <label for="parentLastName">Last Name</label>
-                                <input type="text" name="parentLastname" required id="parentLastName"
+                                <input type="text" name="parentLastName" required id="parentLastName"
                                     class="form-control" value="<?php echo $parent['last_name']; ?>">
                                 <span class="text-danger font-weight-bold" id="parentLastNameError"></span>
                             </div>
@@ -485,14 +485,14 @@
 
                         <div class="form-group">
                             <label for="password">Password</label>
-                            <input class="form-control" required type="text" name="password" id="password" value="<?php echo $student['password'] ?>">
+                            <input class="form-control" required type="password" name="password" id="password" value="<?php echo $student['password'] ?>" readonly>
                             <span class="text-danger font-weight-bold" id="passwordError"></span>
                         </div>
 
                         <div class="form-group">
                             <label for="confirmPassword">Confirm Password</label>
-                            <input class="form-control" required type="text" name="confirmPassword"
-                                id="confirmPassword" value="<?php echo $student['password'] ?>">
+                            <input class="form-control" required type="password" name="confirmPassword"
+                                id="confirmPassword" value="<?php echo $student['password'] ?>" readonly>
                             <span class="text-danger font-weight-bold" id="confirmPassword"></span>
                         </div>
 
