@@ -16,7 +16,7 @@ if(isset($_POST['submit'])){
     $bloodGroup = $_POST['bloodGroup'];
     $studentEmail = $_POST['studentEmail'];
     $password = $_POST['password'];
-    $encryptedPass = password_hash($password,PASSWORD_BCRYPT);
+    $encryptedPass = encryptPassword($password);
 
     // Parent Data
     $parentFirstName = $_POST['parentFirstName'];
@@ -71,7 +71,7 @@ if(isset($_POST['submit'])){
         $parentID = getParentID($parentCnic);
 
         // Insertion Query
-        $query = "INSERT INTO Students(first_name,last_name,class_name,mobile_number,cnic,address,gender,blood_group,email,password,parent_id) values('$studentFirstName','$studentLastName','$studentClass','$studentMobileNo','$studentCnic','$studentAddress',$gender,'$bloodGroup','$studentEmail','$password',$parentID)";
+        $query = "INSERT INTO Students(first_name,last_name,class_name,mobile_number,cnic,address,gender,blood_group,email,password,parent_id) values('$studentFirstName','$studentLastName','$studentClass','$studentMobileNo','$studentCnic','$studentAddress',$gender,'$bloodGroup','$studentEmail','$encryptedPass',$parentID)";
 
         // Executing Query
         $result = mysqli_query($connection,$query);

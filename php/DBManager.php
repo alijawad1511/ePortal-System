@@ -139,4 +139,17 @@ function parentEmailRepetition($email){
     }
 }
 
+function encryptPassword($password){
+      
+    $encryptedPassword = password_hash($password,PASSWORD_BCRYPT);
+
+    return $encryptedPassword;
+}
+
+function verifyPassword($password,$hash){
+    $verification = password_verify($plainText,$hash);
+
+    return $verification;
+}
+
 ?>
