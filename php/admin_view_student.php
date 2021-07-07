@@ -49,17 +49,22 @@
                         Dashboard
                     </a>
                 </li>
-                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="student_info.php">
+                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="manage_teachers.php">
                         <i class="fas fa-chalkboard-teacher ml-1 mr-2"></i>
-                        Personal Info
+                        Teachers
                     </a>
                 </li>
                 <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="manage_students.php">
                         <i class="fas fa-user-graduate ml-1 mr-2"></i>
-                        Class Incharge
+                        Students
                     </a>
                 </li>
                 <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="manage_parents.php">
+                        <i class="fa fa-group ml-1 mr-2"></i>
+                        Parents
+                    </a>
+                </li>
+                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="#">
                         <i class="fas fa-book ml-1 mr-2"></i>
                         Subjects
                     </a>
@@ -77,6 +82,16 @@
                 <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="#">
                         <i class="fa fa-money-check-alt ml-1 mr-2"></i>
                         Payments
+                    </a>
+                </li>
+                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="#">
+                        <i class="fas fa-users ml-1 mr-2"></i>
+                        Admins
+                    </a>
+                </li>
+                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="#">
+                        <i class="fas fa-copy ml-1 mr-2"></i>
+                        Accounts
                     </a>
                 </li>
             </ul>
