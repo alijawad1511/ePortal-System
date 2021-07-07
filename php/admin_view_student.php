@@ -142,7 +142,7 @@
 
 
             <div class="card mb-2 p-4">
-                <h2><b>Personal Info</b></h2>
+                <h2><b>Student Info</b></h2>
             </div>
 
             <div class="card bg-white mb-2 p-4 rounded-0" id="content-wrapper">
