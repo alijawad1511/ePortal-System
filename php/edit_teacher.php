@@ -8,6 +8,8 @@
     <title>Edit Teacher Info</title>
 
     <?php include 'links.php'; ?>
+    <script src="../js/logout_dropdown.js"></script>
+    <script src="../js/sidebar_showhide.js"></script>
     <script src="../js/teacher_registration.js"></script>
 
 </head>
@@ -90,42 +92,36 @@
         <div id="content" class="overflow-auto">
 
             <!-- Top Navbar -->
-            <nav class="navbar navbar-expand-lg navbar-light bg-light mb-2">
-
-                <button class="btn" id="sidebar-toggler" onclick="hideSidebar()"><span
-                        class="navbar-toggler-icon"></span></button>
-
-                <!-- <span class="p-2 ml-4" style="font-size: 18px;"><b>News</b></span> -->
-                <!-- <div class="border p-1 pt-2 ml-2 d-md-block d-none col-lg-8 col-md-8 " id="topbar-news">
-                    <marquee class="txt" direction="left" onmouseover="stop" onmouseout="start">This is an ePortal
-                        System created by our Group for Web Technologies.</marquee>
-                </div> -->
-
-                <div class="ml-auto">
-                    <span class="font-weight-bold mr-1" style="font-size: 18px;">Admin</span>
-                    <img src="../assets/user-profile.jpg" id="user-profile" width="40" height="40" class="rounded-circle"
-                        alt="">
-                    <div class="card p-2 bg-white shadow" id="dropdown">
-                        <div class="useinfo p-2 mb-2 d-flex">
-                            <div>
-                                <img src="img/user-icon.png" class="rounded-circle mr-3" width="50" height="50">
-                            </div>
-                            <div>
-                                <div class="font-weight-bold" id="username" style="font-size: 18px;">Syed Ali Jawad
-                                </div>
-                                <div class="" id="user-id" style="font-size: 14px;">F2019266282</div>
-                            </div>
-                        </div>
-                        <a href="#" class="nav-link text-dark font-weight-bold"><i class="fa fa-key pr-2"></i> Change
-                            Password</a>
-                        <hr class="my-1 color-light">
-                        <a href="#" class="nav-link text-dark font-weight-bold"><i
-                                class="fas fa-sign-out-alt pr-3"></i>Log
-                            Out</a>
+            <nav class="navbar mb-2 navbar-light bg-light mb-2">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" id="sidebar-toggle" onclick="hideSidebar()" class="btn btn-info navbar-btn mr-auto">
+                            <i class="fa fa-bars" aria-hidden="true"></i>
+                        </button>
                     </div>
-                </div> 
-
-
+                    <!-- <span class="ml-auto mr-2 font-weight-bold" style="font-size: 20px;">Jawad Shah</span> -->
+                    <a class="text-decoration-none">
+                        <img src="../assets/user-profile.jpg" id="user-profile" onclick="showDropdown()" width="40" height="40" class="rounded-circle ml-auto" alt="">
+                        <div class="card p-2 bg-white shadow" id="dropdown">
+                            <div class="useinfo p-2 mb-2 d-flex">
+                                <div>
+                                    <img src="../assets/user-icon.png" class="rounded-circle mr-3" width="50" height="50">
+                                </div>
+                                <div>
+                                    <div class="text-primary font-weight-bold" id="username" style="font-size: 18px;">Syed Ali Jawad
+                                    </div>
+                                    <div class="text-dark font-weight-bold" id="user-id" style="font-size: 14px;">Admin</div>
+                                </div>
+                            </div>
+                            <a href="#" class="nav-link text-dark font-weight-bold"><i class="fa fa-key pr-2"></i> Change
+                                Password</a>
+                            <hr class="my-1 color-light">
+                            <a href="#" class="nav-link text-dark font-weight-bold"><i
+                                    class="fas fa-sign-out-alt pr-3"></i>Log
+                                Out</a>
+                        </div>
+                    </a>
+                </div>
             </nav>
 
         <?php 
@@ -148,7 +144,7 @@
                 <hr class="divider py-2">
 
                 <!-- Form Start -->
-                <form action="php/add_teacher.php" method="POST" onsubmit="return validateTeacherRegistration()">
+                <form action="update_teacher_info.php" method="POST" onsubmit="return validateTeacherRegistration()">
 
                     <div class="px-5 py-3 mb-5 border" id="personal-info">
 
@@ -178,7 +174,7 @@
                         <div class="clearfix class-container">
                             <div class="form-group float-left">
                                 <label for="class">Incharge of Class</label>
-                                <select class="form-control" name="class" id="class" required>
+                                <select class="form-control" name="class" id="class" required disabled>
                                     <option value="">--Select Your Class--</option>
                                     <option value="Nursery"
                                     <?php
@@ -269,7 +265,7 @@
                             </div>
                             <div class="form-group float-right">
                                 <label for="section">Section</label>
-                                <select class="form-control" name="section" id="section" required>
+                                <select class="form-control" name="section" id="section" required disabled>
                                     <option value="">--Select Class--</option>
                                     <option value="A"
                                     <?php
@@ -296,7 +292,10 @@
                                 <input class="form-check-input" type="radio" name="gender" id="maleOption" value="m" <?php 
                                     if($teacher['gender'] == "Male"){
                                         echo 'checked';
-                                    }?>
+                                    }else{
+                                        echo "disabled";
+                                    }
+                                    ?>
                                     >
                                 <label class="form-check-label font-weight-normal" for="maleOption">
                                     Male
@@ -306,6 +305,8 @@
                                 <input class="form-check-input" type="radio" name="gender" id="femaleOption" value="f"<?php 
                                     if($teacher['gender'] == "Female"){
                                         echo 'checked';
+                                    }else{
+                                        echo "disabled";
                                     }
                                 ?>>
                                 <label class="form-check-label font-weight-normal" for="femaleOption">
@@ -371,14 +372,14 @@
 
                         <div class="form-group">
                             <label for="password">Password</label>
-                            <input class="form-control" required type="password" name="password" id="password" value="<?php echo $teacher['password']?>">
+                            <input class="form-control" required type="password" name="password" id="password" value="<?php echo $teacher['password']?>" readonly>
                             <span class="text-danger font-weight-bold" id="passwordError"></span>
                         </div>
 
                         <div class="form-group">
                             <label for="confirmPassword">Confirm Password</label>
                             <input class="form-control" required type="password" name="confirmPassword"
-                                id="confirmPassword" value="<?php echo $teacher['password']?>">
+                                id="confirmPassword" value="<?php echo $teacher['password']?>" readonly>
                             <span class="text-danger font-weight-bold" id="confirmPasswordError"></span>
                         </div>
 

@@ -174,9 +174,9 @@
                                         <td><?php echo $teacher['mobile_number']; ?></td>
                                         <td><?php echo $teacher['subject']; ?></td>
                                         <td><?php echo $teacher['qualification']; ?></td>
-                                        <td class="text-center"><a href="#" class="text-decoration-none"><i style="color: green;" class="fas fa-eye"></i></a></td>
+                                        <td class="text-center"><a href="admin_view_teacher.php?id=<?php echo $teacher['teacher_id'];?>" class="text-decoration-none"><i style="color: green;" class="fas fa-eye"></i></a></td>
                                         <td class="text-center"><a href="edit_teacher.php?id=<?php echo $teacher['teacher_id']; ?>" class="text-decoration-none"><i style="color: rgb(34, 119, 230);" class="far fa-edit"></i></a></td>
-                                        <td class="text-center"><a href="#" class="text-decoration-none"><i style="color: red;" class="fas fa-trash"></i></a></td>
+                                        <td class="text-center"><a href="delete_teacher.php?id=<?php echo $teacher['teacher_id'];?>" class="text-decoration-none"><i style="color: red;" class="fas fa-trash"></i></a></td>
                                         </tr>
                                    
                                  <?php
