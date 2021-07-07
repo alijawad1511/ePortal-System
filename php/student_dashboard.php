@@ -184,7 +184,6 @@
 
     </div>
 
-    <?php session_start(); ?>
     <div class="modal" id="changePasswordWindow">
         <div class="modal-dialog">
             <div class="modal-content">
