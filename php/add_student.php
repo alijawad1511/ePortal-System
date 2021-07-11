@@ -37,7 +37,7 @@ if (isset($_POST['submit'])) {
 
         // Get Parent ID from DB and Insert into Student Table for parent reference
         $parentID = getParentID($parentCnic);
-        $query = "INSERT INTO Students(first_name,last_name,class_name,mobile_number,cnic,address,gender,blood_group,email,password,parent_id) values('$studentFirstName','$studentLastName','$studentClass','$studentMobileNo','$studentCnic','$studentAddress','$gender','$bloodGroup','$studentEmail','$encryptedPass',$parentID)";
+        $query = "INSERT INTO Students(first_name,last_name,class_name,mobile_number,cnic,address,gender,blood_group,email,password,parent_id,account_status) values('$studentFirstName','$studentLastName','$studentClass','$studentMobileNo','$studentCnic','$studentAddress','$gender','$bloodGroup','$studentEmail','$encryptedPass',$parentID,1)";
         $result = mysqli_query($connection, $query);
 
         if ($result) {
@@ -69,58 +69,5 @@ if (isset($_POST['submit'])) {
             echo "<script>alert('Error! Student not registered')</script>";
         }
     }
-    // if (isParentAlreadyExists($parentCnic)) {
-
-
-    //     $parentID = getParentID($parentCnic);
-    //     echo $parentID;
-
-    //     // Insertion Query
-    //     $query = "INSERT INTO Students(first_name,last_name,class_name,mobile_number,cnic,address,gender,blood_group,email,password,parent_id) values('$studentFirstName','$studentLastName','$studentClass','$studentMobileNo','$studentCnic','$studentAddress','$gender','$bloodGroup','$studentEmail','$encryptedPass',$parentID)";
-
-    //     // Executing Query
-    //     $result = mysqli_query($connection, $query);
-
-    //     if ($result) {
-    //         echo "<script>alert('Student registered successfully!')</script>";
-    //         header("Location: http://localhost/ePortal-System/php/manage_students.php", true, 301);
-    //     } else {
-    //         echo "<script>alert('Error! Student not registered')</script>";
-    //     }
-    // } else {
-
-    //     /*
-    //     if(parentCnicRepetition($parentCnic)){
-    //         echo "<script>alert('Error! Parent CNIC already exists')</script>";
-    //     }
-        
-    //     if(studentEmailRepetition($studentEmail)){
-    //         echo "<script>alert('Error! Student Email already exists')</script>";
-    //     }
-        
-    //     if(studentCnicRepetition($studentCnic)){
-    //         echo "<script>alert('Error! Student CNIC already exists')</script>";
-    //     }
-    //     */
-
-
-    //     $query = "INSERT into Parents(first_name,last_name,mobile_number,cnic,email,address,occupation,designation) values('$parentFirstName','$parentLastname','$parentMobileNo','$parentCnic','$parentEmail','$parentAddress','$parentOccupation','$parentDesignation')";
-
-    //     $result = mysqli_query($connection, $query);
-
-    //     $parentID = getParentID($parentCnic);
-
-    //     // Insertion Query
-    //     $query = "INSERT INTO Students(first_name,last_name,class_name,mobile_number,cnic,address,gender,blood_group,email,password,parent_id) values('$studentFirstName','$studentLastName','$studentClass','$studentMobileNo','$studentCnic','$studentAddress',$gender,'$bloodGroup','$studentEmail','$encryptedPass',$parentID)";
-
-    //     // Executing Query
-    //     $result = mysqli_query($connection, $query);
-
-    //     if ($result) {
-    //         echo "<script>alert('Student registered successfully!')</script>";
-    //         header("Location: http://localhost/ePortal-System/php/manage_students.php", true, 301);
-    //     } else {
-    //         echo "<script>alert('Error! Student not registered')</script>";
-    //     }
-    // }
+    
 }

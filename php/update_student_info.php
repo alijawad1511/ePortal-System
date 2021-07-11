@@ -25,10 +25,10 @@ if(isset($_POST['submit'])){
 
     $query = "UPDATE Parents SET first_name = '$parentFirstName', last_name = '$parentLastName', mobile_number = '$parentMobileNo', address = '$parentAddress' WHERE cnic = '$parentCnic'";
     $parentUpdationStatus = mysqli_query($connection,$query);
-
-    if($studentUpdationStatus==true && $parentUpdationStatus==true){
-        header("Location: http://localhost/ePortal-System/php/manage_students.php",true,301);
+    
+    if($studentUpdationStatus===true && $parentUpdationStatus===true){
         echo "<script>alert('Student Info updated successfully!')</script>";
+        header("Location: manage_students.php");
     }else{
         echo "<script>alert('Error! Student Info not edited.')</script>";
     }
