@@ -317,7 +317,7 @@
                             <label for="confirmPassword">Confirm Password</label>
                             <input class="form-control" required type="password" name="confirmPassword"
                                 id="confirmPassword">
-                            <span class="text-danger font-weight-bold" id="confirmPassword"></span>
+                            <span class="text-danger font-weight-bold" id="confirmPasswordError"></span>
                         </div>
 
                     </div>

@@ -1,4 +1,5 @@
 <?php
+
 include 'connection.php';
 
 function deleteStudent($id){
@@ -59,7 +60,9 @@ function identifyUser($email, $password){
     if($email=="admin" && $password=="admin"){
         return 0;
     }else{
-        
+
+        $encryptedPassword = encryptPassword($password);
+
         $query = "SELECT * from Teachers WHERE email = '$email' and password = '$password'";
         $result = mysqli_query($connection,$query);
         
@@ -67,6 +70,7 @@ function identifyUser($email, $password){
             $currentUser = mysqli_fetch_array($result);
             return 1;
         }else{
+
             $query = "SELECT * from Students WHERE email = '$email' and password = '$password'";
             $result = mysqli_query($connection,$query);
 

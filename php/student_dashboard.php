@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,10 +18,9 @@
 
 
     <?php
-    session_start();
         include 'connection.php';
         
-        $studentID = $_GET['id'];
+        $studentID = $_SESSION['currentUserId'];
 
         $query = "SELECT * from Students WHERE student_id = $studentID";
         $result = mysqli_query($connection,$query);

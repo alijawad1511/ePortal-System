@@ -154,18 +154,14 @@ function validateStudentRegistration() {
 
     if (password != confirmPassword) {
         document.getElementById('passwordError').innerHTML = `<i class="fas fa-exclamation-circle text-danger"></i> Password and Confirm Password don't match. They should be same.`;
-        document.getElementById('confirmPasswordError').innerHTML = `<i class="fas fa-exclamation-circle text-danger"></i> Password and Confirm Password don't match. They should be same.`;
         console.log("cpass");
         return false;
     }
     else {
         document.getElementById('passwordError').innerHTML = "";
-        document.getElementById('confirmPasswordError').innerHTML = "";
     }
 
 
-    // Parent Data Validation
-
-
+    
 
 }

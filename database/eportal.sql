@@ -1,22 +1,3 @@
--- phpMyAdmin SQL Dump
--- version 5.0.4
--- https://www.phpmyadmin.net/
---
--- Host: 127.0.0.1
--- Generation Time: Jul 07, 2021 at 05:25 PM
--- Server version: 10.4.17-MariaDB
--- PHP Version: 8.0.1
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
 --
 -- Database: `eportal`
 --
@@ -35,7 +16,7 @@ CREATE TABLE `assessments` (
   `total_marks` int(11) DEFAULT NULL,
   `obtained_marks` int(11) DEFAULT NULL,
   `date` date NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+);
 
 --
 -- Dumping data for table `assessments`
@@ -58,7 +39,7 @@ CREATE TABLE `classes` (
   `class_name` varchar(20) NOT NULL,
   `section` char(1) DEFAULT NULL,
   `incharge_id` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+);
 
 --
 -- Dumping data for table `classes`
@@ -92,7 +73,7 @@ CREATE TABLE `parents` (
   `address` varchar(100) DEFAULT NULL,
   `occupation` varchar(30) DEFAULT NULL,
   `designation` varchar(30) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+);
 
 --
 -- Dumping data for table `parents`
@@ -132,8 +113,7 @@ CREATE TABLE `students` (
   `password` varchar(255) DEFAULT NULL,
   `parent_id` int(11) DEFAULT NULL,
   `account_status` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
+);
 --
 -- Dumping data for table `students`
 --

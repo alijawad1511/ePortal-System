@@ -36,22 +36,22 @@
 
             <!-- Navigation -->
             <ul>
-                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="teacher_dashboard.php?id=<?php echo $teacherID;?>">
+                <li><a class="nav-link text-white font-weight-bold px-3 py-3 active">
                         <i class="fas fa-tachometer-alt ml-1 mr-2"></i>
                         Dashboard
                     </a>
                 </li>
-                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="personal_info.php?id=<?php echo $teacherID;?>">
+                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="teacher_info.php?id=<?php echo $teacherID;?>">
                         <i class="fas fa-chalkboard-teacher ml-1 mr-2"></i>
                         Personal Info
                     </a>
                 </li>
-                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="manage_students.php?id=<?php echo $teacherID;?>">
+                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="manage_students.php">
                         <i class="fas fa-user-graduate ml-1 mr-2"></i>
                         Students
                     </a>
                 </li>
-                <li><a class="nav-link text-white font-weight-bold px-3 py-3 active">
+                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="parents_info.php">
                         <i class="fa fa-group ml-1 mr-2"></i>
                         Parents
                     </a>
@@ -140,7 +140,6 @@
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Contact</th>
-                                <th>CNIC</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -158,7 +157,6 @@
                                 <td><?php echo $parent['first_name']." ".$parent['last_name']; ?></td>
                                 <td><?php echo $parent['email']; ?></td>
                                 <td><?php echo $parent['mobile_number']; ?></td>
-                                <td><?php echo $parent['cnic']; ?></td>
                             </tr>
 
                             <?php

@@ -29,12 +29,46 @@
     text-decoration: none;
 }
 
+
 #form-container a:hover{
     color: rgb(204, 7, 7);
 }
 
 .form-group i:hover{
     cursor: pointer;
+}
+
+@media screen  and (max-width: 1440px) {
+
+    #form-container h2{
+        font-size: 22px;
+    }
+
+
+    #form-container i{
+        font-size: 20px;
+        color: rgb(151, 154, 156);
+        position: relative;
+        top: -27px;
+        left: 600px;
+    }
+
+    #logo-container #login-logo{
+        width: 170px;
+        height: 130px;
+    }
+
+    #form-container label{
+        font-size: 16px;
+    }
+
+    #form-container input{
+        font-size: 14px;
+    }
+
+    #form-container .alert{
+        font-size: 14px;
+    }
 }
 
 /* For Tablets and Ipads */

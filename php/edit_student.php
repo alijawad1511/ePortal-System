@@ -34,12 +34,12 @@
 
             <!-- Navigation -->
             <ul>
-                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="admin_dashboard.html">
+                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="admin_dashboard.php">
                         <i class="fas fa-tachometer-alt ml-1 mr-2"></i>
                         Dashboard
                     </a>
                 </li>
-                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="manage_teachers.html">
+                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="manage_teachers.php">
                         <i class="fas fa-chalkboard-teacher ml-1 mr-2"></i>
                         Teachers
                     </a>

@@ -2,9 +2,7 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>Teacher Dashboard</title>
 
     <?php include 'links.php' ?>
@@ -16,16 +14,16 @@
 <body>
 
 <?php
-    session_start();
+        session_start();
         include 'connection.php';
         
-        $teacherID = $_GET['id'];
+        $teacherID = $_SESSION['currentUserId'];
 
         $query = "SELECT * from Teachers WHERE teacher_id = $teacherID";
         $result = mysqli_query($connection,$query);
         $teacherInfo = mysqli_fetch_array($result);
 
-    ?>
+ ?>
 
 
     <!-- Wrapper Start -->
@@ -52,7 +50,7 @@
                         Personal Info
                     </a>
                 </li>
-                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="manage_students.php">
+                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="class_students.php">
                         <i class="fas fa-user-graduate ml-1 mr-2"></i>
                         Students
                     </a>
@@ -130,25 +128,25 @@
             </div>
 
             <div class="card bg-white mb-2 p-3 d-flex flex-row flex-wrap justify-content-around" id="content-wrapper">
-                <a href="teacher_info.php?id=<?php echo $teacherID; ?>">
+                <a href="teacher_info.php">
                     <div class="card mb-4 p-3 shadow widget-card d-flex text-center text-primary">
                         <div class="heading mb-3">Personal Info</div>
                         <div><i class="fas fa-user-graduate"></i></div>
                     </div>
                 </a>
-                <a href="see_students.php?id=<?php echo $teacherID; ?>">
+                <a href="class_students.php">
                     <div class="card mb-4 p-3 shadow widget-card d-flex text-center text-warning">
                         <div class="heading mb-3">Students</div>
                         <div><i class="fas fa-chalkboard-teacher"></i></div>
                     </div>
                 </a>
-                <a href="parents_info.php?id=<?php echo $teacherID; ?>">
+                <a href="parents_info.php">
                     <div class="card mb-4 p-3 shadow widget-card d-flex text-center text-secondary">
                         <div class="heading mb-3">Parents</div>
                         <div><i class="fa fa-group"></i></div>
                     </div>
                 </a>
-                <a href="manage_subjects.php?id=<?php echo $teacherID; ?>">
+                <a href="manage_subjects.php">
                     <div class="card mb-4 p-3 shadow widget-card d-flex text-center text-info">
                         <div class="heading mb-3">Subjects</div>
                         <div><i class="fas fa-book"></i></div>

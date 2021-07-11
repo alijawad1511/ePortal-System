@@ -5,29 +5,31 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teacher Info</title>
+    <title>Student Assessments</title>
 
     <?php include 'links.php'; ?>
-    <script src="../js/sidebar_showhide.js"></script>
     <script src="../js/logout_dropdown.js"></script>
+    <script src="../js/sidebar_showhide.js"></script>
+
 </head>
 
 <body>
-    
-    <!-- Php Code -->
-    <?php 
-        session_start();
-        include 'DBManager.php';
 
+
+<?php
+        session_start();
+        include 'connection.php';
+        
         $teacherID = $_SESSION['currentUserId'];
+
+        // Student ID whose Assessments show here
+        $studentID = $_GET['id'];
 
         $query = "SELECT * from Teachers WHERE teacher_id = $teacherID";
         $result = mysqli_query($connection,$query);
         $teacherInfo = mysqli_fetch_array($result);
 
-    ?>
-
-
+ ?>
 
     <!-- Wrapper Start -->
     <div class="wrapper">
@@ -43,22 +45,22 @@
 
             <!-- Navigation -->
             <ul>
-                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="teacher_dashboard.php?id=<?php echo $teacherID;?>">
+                <li><a class="nav-link text-white font-weight-bold px-3 py-3 active">
                         <i class="fas fa-tachometer-alt ml-1 mr-2"></i>
                         Dashboard
                     </a>
                 </li>
-                <li><a class="nav-link text-white font-weight-bold px-3 py-3 active">
+                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="teacher_info.php?id=<?php echo $teacherID;?>">
                         <i class="fas fa-chalkboard-teacher ml-1 mr-2"></i>
                         Personal Info
                     </a>
                 </li>
-                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="manage_students.php?id=<?php echo $teacherID;?>">
+                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="class_students.php">
                         <i class="fas fa-user-graduate ml-1 mr-2"></i>
                         Students
                     </a>
                 </li>
-                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="manage_parents.php?id=<?php echo $teacherID;?>">
+                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="parents_info.php">
                         <i class="fa fa-group ml-1 mr-2"></i>
                         Parents
                     </a>
@@ -125,63 +127,54 @@
                 </div>
             </nav>
 
-
-            <div class="card mb-2 p-4">
-                <h2><b>Teacher Info</b></h2>
-            </div>
-
             <div class="card bg-white mb-2 p-4 rounded-0" id="content-wrapper">
-                
-                <div class="card bg-white p-5 mb-3">
-                    <div class="row">
-                        <div class="col-4">
-                            <img src="../assets/user-icon.png" alt="Profile" width="200" height="200">
-                        </div>
-                        <div class="col-8">
-                            <div class="row mb-2 bg-light">
-                                <div class="col-6">
-                                    <label class="font-weight-bold text-black d-block">Name</label>
-                                    <span class="text-muted"><?php echo $teacherInfo['first_name']." ".$teacherInfo['last_name']; ?></span>
-                                </div>
-                                <div class="col-6">
-                                    <label class="font-weight-bold text-black d-block">Gender</label>
-                                    <span class="text-muted"><?php echo $teacherInfo['gender']; ?></span>
-                                </div>
-                            </div>
-                            <div class="row mb-2 bg-light">
-                                <div class="col-6">
-                                    <label class="font-weight-bold text-black d-block">Contact</label>
-                                    <span class="text-muted"><?php echo $teacherInfo['mobile_number']; ?></span>
-                                </div>
-                                <div class="col-6">
-                                    <label class="font-weight-bold text-black d-block">Email</label>
-                                    <span class="text-muted"><?php echo $teacherInfo['email']; ?></span>
-                                </div>
-                            </div>
-                            <div class="row mb-2 bg-light">
-                                <div class="col-6">
-                                    <label class="font-weight-bold text-black d-block">CNIC</label>
-                                    <span class="text-muted"><?php echo $teacherInfo['cnic']; ?></span>
-                                </div>
-                                <div class="col-6">
-                                    <label class="font-weight-bold text-black d-block">Address</label>
-                                    <span class="text-muted"><?php echo $teacherInfo['address']; ?></span>
-                                </div>
-                            </div>
-                            <div class="row mb-2 bg-light">
-                                <div class="col-6">
-                                    <label class="font-weight-bold text-black d-block">Qualification</label>
-                                    <span class="text-muted"><?php echo $teacherInfo['qualification']; ?></span>
-                                </div>
-                                <div class="col-6">
-                                    <label class="font-weight-bold text-black d-block">Subject</label>
-                                    <span class="text-muted"><?php echo $teacherInfo['subject']; ?></span>
-                                </div>
-                            </div>
+                <h2 class="main-heading text-secondary"><b>Assessments</b></h2>
+                <hr class="divider py-2">
 
-                        </div>
-                    </div>
+                <div class="card table-container overflow-auto bg-light border">
+                    <table class="table table-responsive-lg table-responsive-md table-responsive-sm table-hover">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>Assessment Name</th>
+                                <th>Subject</th>
+                                <th>Total Marks</th>
+                                <th>Obtained Marks</th>
+                                <th class="text-center">Edit</th>
+                                <th class="text-center">Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+
+// INSERT INTO `assessments`(`student_id`, `assessment_name`, `subject_title`, `totla_marks`, `obtained_marks`) VALUES (1,'Monthly Test # 2','Physics',25,25);
+
+                            $query = "SELECT S.first_name,S.last_name,assessment_name,subject_title,total_marks,obtained_marks from Students as S,Assessments as A WHERE A.student_id = S.student_id and S.student_id = $studentID";
+                            $result = mysqli_query($connection,$query);
+                            $noOfRows = mysqli_num_rows($result);
+
+
+                            if($noOfRows>0){
+
+                                while($assessment = mysqli_fetch_array($result)){  ?>
+                                    <tr>
+                                    <td><?php echo $assessment['assessment_name']; ?></td>
+                                    <td><?php echo $assessment['subject_title']; ?></td>
+                                    <td><?php echo $assessment['total_marks']; ?></td>
+                                    <td><?php echo $assessment['obtained_marks']; ?></td>
+                                    <td class="text-center"><a href="edit_assessment.php?id=<?php echo $student['student_id'];?>"><i style="color: rgb(34, 119, 230);" class="far fa-edit"></i></a></td>
+                                    <td class="text-center"><a href="delete_assessment.php?id=<?php echo $student['student_id'];?>"><i style="color: red;" class="fas fa-trash"></i></a></td>
+                                    </tr>
+                               
+                             <?php
+
+                                } // while Loop closing
+                            }  // If closing
+
+                        ?>
+                        </tbody>
+                    </table>
                 </div>
+
 
             </div>
 
@@ -197,7 +190,6 @@
 
     </div>
     <!-- Wrapper End     -->
-
 
 </body>
 

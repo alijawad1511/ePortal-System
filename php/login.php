@@ -1,4 +1,5 @@
 <?php
+// session_start();
 include 'DBManager.php';
 
 if(isset($_POST['submit'])){
@@ -6,7 +7,7 @@ if(isset($_POST['submit'])){
     $email = $_POST['email'];
     $password = $_POST['password'];
     
-    // $encryptedPass = password_hash($password,PASSWORD_BCRYPT);
+    // $password = password_hash($password,PASSWORD_BCRYPT);
     
     
     // Identification of User
@@ -20,6 +21,10 @@ if(isset($_POST['submit'])){
         $studentID = $currentUser['student_id'];
         header("Location: student_dashboard.php?id='$studentID'"); 
         // header("Location: http://localhost/ePortal-System/php/student_dashboard.php",true,301);
+    }else{
+        
+        
+
     }
     
 }

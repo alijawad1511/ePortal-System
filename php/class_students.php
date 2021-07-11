@@ -2,20 +2,20 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teacher Info</title>
-
+    
+    <title>Manage Students</title>
     <?php include 'links.php'; ?>
-    <script src="../js/sidebar_showhide.js"></script>
+    
     <script src="../js/logout_dropdown.js"></script>
+    <script src="../js/sidebar_showhide.js"></script>
+    <script src="../js/tableSearch.js"></script>
+    <script src="../js/student_registration.js"></script>
+
 </head>
 
 <body>
-    
-    <!-- Php Code -->
-    <?php 
+
+<?php 
         session_start();
         include 'DBManager.php';
 
@@ -26,9 +26,8 @@
         $teacherInfo = mysqli_fetch_array($result);
 
     ?>
-
-
-
+    
+    
     <!-- Wrapper Start -->
     <div class="wrapper">
 
@@ -43,22 +42,22 @@
 
             <!-- Navigation -->
             <ul>
-                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="teacher_dashboard.php?id=<?php echo $teacherID;?>">
+                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="teacher_dashboard.php">
                         <i class="fas fa-tachometer-alt ml-1 mr-2"></i>
                         Dashboard
                     </a>
                 </li>
-                <li><a class="nav-link text-white font-weight-bold px-3 py-3 active">
+                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="teacher_info.php">
                         <i class="fas fa-chalkboard-teacher ml-1 mr-2"></i>
                         Personal Info
                     </a>
                 </li>
-                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="manage_students.php?id=<?php echo $teacherID;?>">
+                <li><a class="nav-link text-white font-weight-bold px-3 py-3 active">
                         <i class="fas fa-user-graduate ml-1 mr-2"></i>
                         Students
                     </a>
                 </li>
-                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="manage_parents.php?id=<?php echo $teacherID;?>">
+                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="parents_info.php">
                         <i class="fa fa-group ml-1 mr-2"></i>
                         Parents
                     </a>
@@ -125,67 +124,63 @@
                 </div>
             </nav>
 
-
-            <div class="card mb-2 p-4">
-                <h2><b>Teacher Info</b></h2>
-            </div>
-
             <div class="card bg-white mb-2 p-4 rounded-0" id="content-wrapper">
-                
-                <div class="card bg-white p-5 mb-3">
-                    <div class="row">
-                        <div class="col-4">
-                            <img src="../assets/user-icon.png" alt="Profile" width="200" height="200">
-                        </div>
-                        <div class="col-8">
-                            <div class="row mb-2 bg-light">
-                                <div class="col-6">
-                                    <label class="font-weight-bold text-black d-block">Name</label>
-                                    <span class="text-muted"><?php echo $teacherInfo['first_name']." ".$teacherInfo['last_name']; ?></span>
-                                </div>
-                                <div class="col-6">
-                                    <label class="font-weight-bold text-black d-block">Gender</label>
-                                    <span class="text-muted"><?php echo $teacherInfo['gender']; ?></span>
-                                </div>
-                            </div>
-                            <div class="row mb-2 bg-light">
-                                <div class="col-6">
-                                    <label class="font-weight-bold text-black d-block">Contact</label>
-                                    <span class="text-muted"><?php echo $teacherInfo['mobile_number']; ?></span>
-                                </div>
-                                <div class="col-6">
-                                    <label class="font-weight-bold text-black d-block">Email</label>
-                                    <span class="text-muted"><?php echo $teacherInfo['email']; ?></span>
-                                </div>
-                            </div>
-                            <div class="row mb-2 bg-light">
-                                <div class="col-6">
-                                    <label class="font-weight-bold text-black d-block">CNIC</label>
-                                    <span class="text-muted"><?php echo $teacherInfo['cnic']; ?></span>
-                                </div>
-                                <div class="col-6">
-                                    <label class="font-weight-bold text-black d-block">Address</label>
-                                    <span class="text-muted"><?php echo $teacherInfo['address']; ?></span>
-                                </div>
-                            </div>
-                            <div class="row mb-2 bg-light">
-                                <div class="col-6">
-                                    <label class="font-weight-bold text-black d-block">Qualification</label>
-                                    <span class="text-muted"><?php echo $teacherInfo['qualification']; ?></span>
-                                </div>
-                                <div class="col-6">
-                                    <label class="font-weight-bold text-black d-block">Subject</label>
-                                    <span class="text-muted"><?php echo $teacherInfo['subject']; ?></span>
-                                </div>
-                            </div>
+                <h2 class="main-heading text-secondary"><b>Students</b></h2>
+                <hr class="divider py-2">
 
-                        </div>
-                    </div>
+                <div class="clearfix class-container p-3 border mb-3">
+                    <a href="student_registration.php" class="btn btn-success float-left"><i
+                            class="fas fa-user-plus mr-1"></i>Add Student</a>
+                    <form action="#" method="GET" class="form-inline ml-auto float-right">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search name here..."
+                            aria-label="Search" onkeyup="myFunction()" id="search-keyword">
+                        <button class="btn btn-outline-primary my-2 my-sm-0" onclick="validateSearch()" type="submit"
+                            name="search">Search</button>
+                    </form>
                 </div>
 
+
+                <div class="card table-container overflow-auto bg-light border">
+                    <table class="table table-responsive-lg table-responsive-md table-responsive-sm table-hover" id="table">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th class="text-center">Assessments</th>
+                                <th class="text-center">Attendance</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            $query = "SELECT * from students";
+                            $result = mysqli_query($connection,$query);
+                            $noOfRows = mysqli_num_rows($result);
+
+
+                            if($noOfRows>0){
+
+                                while($student = mysqli_fetch_array($result)){  ?>
+                                    <tr>
+                                    <td><?php echo $student['student_id']; ?></td>
+                                    <td><?php echo $student['first_name']." ".$student['last_name']; ?></td>
+                                    <td class="text-center"><a href="view_student_assessment.php?id=<?php echo $student['student_id'];?>"><i style="color: green;" class="fas fa-eye"></i></a></td>
+                                    <td class="text-center"><a href="view_student_attendance.php?id=<?php echo $student['student_id'];?>"><i style="color: rgb(34, 119, 230);" class="fas fa-file-powerpoint"></i></a></td>
+                                    </tr>
+                               
+                             <?php
+
+                                } // while Loop closing
+                            }  // If closing
+
+                        ?>
+                        </tbody>
+                    </table>
+                </div>
+
+
             </div>
 
-            <div class="card p-4 bg-white" id="footer">
+            <div class="card p-4 bg-white rounded-0" id="footer">
                 Developed by : <b>Syed Ali Jawad Bukhari</b>
             </div>
 
@@ -197,7 +192,6 @@
 
     </div>
     <!-- Wrapper End     -->
-
 
 </body>
 
