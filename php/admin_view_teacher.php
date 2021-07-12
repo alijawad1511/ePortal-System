@@ -1,10 +1,21 @@
+<?php
+session_start();
+
+if(!isset($_SESSION['currentUserId'])){
+
+    ?><script>
+        alert("You are logged out. Please login again");
+        location.replace("../index.php");
+    </script><?php   
+}
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Teacher Info</title>
 
     <?php include 'links.php'; ?>
