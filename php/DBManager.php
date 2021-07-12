@@ -48,10 +48,24 @@ function getStudentID($email, $password){
     $result = mysqli_query($connection,$query);
 
     if($result){
-        $currentUser = mysqli_fetch_array($result);
-        print_r($student);
-        // return $currentUser;
+        return mysqli_fetch_array($result)['student_id'];
     }
+
+    return -1;
+}
+
+function getTeacherID($email){
+    global $connection,$query;
+
+    $query = "SELECT teacher_id FROM Students WHERE email = '$email'";
+
+    $result = mysqli_query($connection,$query);
+
+    if($result){
+        return mysqli_fetch_array($result)['teacher_id'];
+    }
+    
+    return -1;
 }
 
 function identifyUser($email, $password){

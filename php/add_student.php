@@ -16,7 +16,7 @@ if (isset($_POST['submit'])) {
     $bloodGroup = $_POST['bloodGroup'];
     $studentEmail = $_POST['studentEmail'];
     $password = $_POST['password'];
-    $encryptedPass = encryptPassword($password);
+    $encryptedPass = password_hash($password,PASSWORD_BCRYPT  );
 
     // Parent Data
     $parentFirstName = $_POST['parentFirstName'];
@@ -42,7 +42,7 @@ if (isset($_POST['submit'])) {
 
         if ($result) {
             echo "<script>alert('Student registered successfully!')</script>";
-            header("Location: http://localhost/ePortal-System/php/manage_students.php", true, 301);
+            header("Location: manage_students.php");
         } else {
             echo "<script>alert('Error! Student not registered')</script>";
         }
@@ -63,7 +63,7 @@ if (isset($_POST['submit'])) {
 
             if ($result) {
                 echo "<script>alert('Student registered successfully!')</script>";
-                header("Location: http://localhost/ePortal-System/php/manage_students.php", true, 301);
+                header("Location: manage_students.php");
             }
         } else {
             echo "<script>alert('Error! Student not registered')</script>";
