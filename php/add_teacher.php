@@ -20,6 +20,7 @@ if (isset($_POST['submit'])) {
     $query = "INSERT INTO Teachers(first_name,last_name,mobile_number,cnic,address,gender,qualification,subject,email,password) VALUES('$firstName','$lastName','$mobileNumber','$address','$cnic','$gender','$qualification','$subject','$email','$encryptedPass')";
     $result = mysqli_query($connection, $query);
     if ($result) {
+
         echo "<script>alert('Teacher registered successfully!')</script>";
         header("Location: manage_teachers.php");
     } else {
