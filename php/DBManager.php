@@ -1,5 +1,4 @@
 <?php
-
 include 'connection.php';
 
 function deleteStudent($id){
@@ -165,7 +164,7 @@ function encryptPassword($password){
 }
 
 function verifyPassword($password,$hash){
-    $verification = password_verify($plainText,$hash);
+    $verification = password_verify($password,$hash);
 
     return $verification;
 }
