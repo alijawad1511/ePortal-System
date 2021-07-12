@@ -129,14 +129,14 @@
                 <hr class="divider py-2">
 
                 <div class="clearfix class-container p-3 border mb-3">
-                    <a href="student_registration.php" class="btn btn-success float-left"><i
-                            class="fas fa-user-plus mr-1"></i>Add Student</a>
+
                     <form action="#" method="GET" class="form-inline ml-auto float-right">
                         <input class="form-control mr-sm-2" type="search" placeholder="Search name here..."
                             aria-label="Search" onkeyup="myFunction()" id="search-keyword">
                         <button class="btn btn-outline-primary my-2 my-sm-0" onclick="validateSearch()" type="submit"
                             name="search">Search</button>
                     </form>
+
                 </div>
 
 
@@ -146,31 +146,44 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Name</th>
-                                <th class="text-center">Assessments</th>
-                                <th class="text-center">Attendance</th>
+                                <th>Class</th>
+                                <th>Email</th>
+                                <th>Contact</th>
+                                <th>Parent Name</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
-                            $query = "SELECT * from students";
+                            $query = "SELECT student_id,first_name,last_name,class_name,email,mobile_number,parent_id from Students where class_name = (select class_name from classes where incharge_id = $teacherID)";
                             $result = mysqli_query($connection,$query);
                             $noOfRows = mysqli_num_rows($result);
 
 
                             if($noOfRows>0){
 
-                                while($student = mysqli_fetch_array($result)){  ?>
+                                while($student = mysqli_fetch_array($result)){
+                                    $parentId = $student['parent_id'];
+                                    $query = "select first_name,last_name from Parents where parent_id = $parentId";
+                                    $parentResult = mysqli_query($connection,$query);
+                                    $parentName = mysqli_fetch_array($parentResult);
+                                    
+                                    ?>
                                     <tr>
                                     <td><?php echo $student['student_id']; ?></td>
                                     <td><?php echo $student['first_name']." ".$student['last_name']; ?></td>
-                                    <td class="text-center"><a href="view_student_assessment.php?id=<?php echo $student['student_id'];?>"><i style="color: green;" class="fas fa-eye"></i></a></td>
-                                    <td class="text-center"><a href="view_student_attendance.php?id=<?php echo $student['student_id'];?>"><i style="color: rgb(34, 119, 230);" class="fas fa-file-powerpoint"></i></a></td>
+                                    <td><?php echo $student['class_name']; ?></td>
+                                    <td><?php echo $student['email']; ?></td>
+                                    <td><?php echo $student['mobile_number']; ?></td>
+                                    <td><?php echo $parentName['first_name']." ".$parentName['last_name']; ?></td>
                                     </tr>
                                
                              <?php
 
                                 } // while Loop closing
                             }  // If closing
+                            else{
+                                echo '<script>alert("Sorry! No Student still registered in your Class")</script>';
+                            }
 
                         ?>
                         </tbody>

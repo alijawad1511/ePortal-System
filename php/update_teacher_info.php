@@ -9,7 +9,7 @@ if(isset($_POST['submit'])){
     $cnic = $_POST['cnic'];
     $address = $_POST['address'];
     $qualification = $_POST['qualification'];
-    $subject = $_POST['Subject'];
+    $subject = $_POST['subject'];
 
     
 
@@ -18,8 +18,8 @@ if(isset($_POST['submit'])){
     $teacherUpdationStatus = mysqli_query($connection,$query);
 
     if($teacherUpdationStatus==true){
-        echo "<script>confirm('Do you want to update Teacher Info?')</script>";
-        header("Location: http://localhost/ePortal-System/php/manage_teachers.php",true,301);
+        echo "<script>alert('Teacher Info updated successfully')</script>";
+        ?><script>location.replace("manage_teachers.php")</script><?php
     }else{
         echo "<script>alert('Error! Student Info not edited.')</script>";
     }

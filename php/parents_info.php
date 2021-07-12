@@ -1,10 +1,10 @@
+<?php 
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Parents Info</title>
 
     <?php include 'links.php'; ?>
@@ -18,8 +18,11 @@
 
 <body>
 
-    <?php include 'DBManager.php' ?>
-
+    <?php 
+        include 'DBManager.php';
+        $teacherID = $_SESSION['currentUserId'];
+    ?>
+    
 
 
     <!-- Wrapper Start -->
@@ -36,22 +39,22 @@
 
             <!-- Navigation -->
             <ul>
-                <li><a class="nav-link text-white font-weight-bold px-3 py-3 active">
+                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="teacher_dasboard.php">
                         <i class="fas fa-tachometer-alt ml-1 mr-2"></i>
                         Dashboard
                     </a>
                 </li>
-                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="teacher_info.php?id=<?php echo $teacherID;?>">
+                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="teacher_info.php">
                         <i class="fas fa-chalkboard-teacher ml-1 mr-2"></i>
                         Personal Info
                     </a>
                 </li>
-                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="manage_students.php">
+                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="class_students.php">
                         <i class="fas fa-user-graduate ml-1 mr-2"></i>
                         Students
                     </a>
                 </li>
-                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="parents_info.php">
+                <li><a class="nav-link text-white font-weight-bold px-3 py-3 active">
                         <i class="fa fa-group ml-1 mr-2"></i>
                         Parents
                     </a>
@@ -144,9 +147,18 @@
                         </thead>
                         <tbody>
                             <?php
-                                $query = "SELECT * from Parents";
-                                $result = mysqli_query($connection,$query);
-                                $noOfRows = mysqli_num_rows($result);
+
+                                if($_SESSION['currentUserId']==-1){
+                                    $query = "SELECT * from Parents";
+                                    $result = mysqli_query($connection,$query);
+                                    $noOfRows = mysqli_num_rows($result);
+                                }else{
+                                    $query = "SELECT parent_id,first_name,last_name,email,mobile_number from parents where parent_id in (SELECT parent_id from students where class_name = (SELECT class_name from classes where incharge_id = $teacherID))";
+                                    $result = mysqli_query($connection,$query);
+                                    $noOfRows = mysqli_num_rows($result);
+                                    
+                                }
+
 
 
                                 if($noOfRows>0){

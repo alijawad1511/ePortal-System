@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Assessments</title>
+    <title>Students Assessments</title>
 
     <?php include 'links.php'; ?>
     <script src="../js/logout_dropdown.js"></script>
@@ -71,7 +71,7 @@
                     </a>
                 </li>
                 <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="#">
-                        <i class="fas fa-award ml-1 mr-2"></i>
+                        <i class="fas fa-copy ml-1 mr-2"></i>
                         Assessments
                     </a>
                 </li>
@@ -128,15 +128,18 @@
             </nav>
 
             <div class="card bg-white mb-2 p-4 rounded-0" id="content-wrapper">
-                <h2 class="main-heading text-secondary"><b>Assessments</b></h2>
+                <h2 class="main-heading text-secondary"><b>Students Assessments</b></h2>
                 <hr class="divider py-2">
 
                 <div class="card table-container overflow-auto bg-light border">
                     <table class="table table-responsive-lg table-responsive-md table-responsive-sm table-hover">
                         <thead class="thead-dark">
+                            
                             <tr>
+                                <th>Student Name</th>
                                 <th>Assessment Name</th>
                                 <th>Subject</th>
+                                <th>Class</th>
                                 <th>Total Marks</th>
                                 <th>Obtained Marks</th>
                                 <th class="text-center">Edit</th>
@@ -146,9 +149,8 @@
                         <tbody>
                             <?php
 
-// INSERT INTO `assessments`(`student_id`, `assessment_name`, `subject_title`, `totla_marks`, `obtained_marks`) VALUES (1,'Monthly Test # 2','Physics',25,25);
 
-                            $query = "SELECT S.first_name,S.last_name,assessment_name,subject_title,total_marks,obtained_marks from Students as S,Assessments as A WHERE A.student_id = S.student_id and S.student_id = $studentID";
+                            $query = "SELECT S.first_name,S.last_name,class_name,assessment_name,subject_title,total_marks,obtained_marks from Students as S,Assessments as A WHERE A.student_id = S.student_id and S.class_name = (SELECT class_name from classes where incharge_id = $teacherID) and S.student_id = $studentID";
                             $result = mysqli_query($connection,$query);
                             $noOfRows = mysqli_num_rows($result);
 
@@ -157,8 +159,10 @@
 
                                 while($assessment = mysqli_fetch_array($result)){  ?>
                                     <tr>
+                                    <td><?php echo $assessment['first_name']." ".$assessment['last_name']; ?></td>
                                     <td><?php echo $assessment['assessment_name']; ?></td>
                                     <td><?php echo $assessment['subject_title']; ?></td>
+                                    <td><?php echo $assessment['class_name']; ?></td>
                                     <td><?php echo $assessment['total_marks']; ?></td>
                                     <td><?php echo $assessment['obtained_marks']; ?></td>
                                     <td class="text-center"><a href="edit_assessment.php?id=<?php echo $student['student_id'];?>"><i style="color: rgb(34, 119, 230);" class="far fa-edit"></i></a></td>
@@ -169,6 +173,9 @@
 
                                 } // while Loop closing
                             }  // If closing
+                            else{
+                                echo '<script>alert("Sorry! This Student has no Assessments")</script>';
+                            }
 
                         ?>
                         </tbody>

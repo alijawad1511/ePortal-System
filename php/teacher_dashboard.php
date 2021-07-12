@@ -65,8 +65,8 @@
                         Subjects
                     </a>
                 </li>
-                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="#">
-                        <i class="fas fa-award ml-1 mr-2"></i>
+                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="student_assessments.php">
+                        <i class="fas fa-copy ml-1 mr-2"></i>
                         Assessments
                     </a>
                 </li>
@@ -152,10 +152,10 @@
                         <div><i class="fas fa-book"></i></div>
                     </div>
                 </a>
-                <a href="#">
+                <a href="student_assessments.php">
                     <div class="card mb-4 p-3 shadow widget-card d-flex text-center text-success">
                         <div class="heading mb-3">Assessments</div>
-                        <div><i class="fas fa-award"></i></div>
+                        <div><i class="fas fa-copy"></i></div>
                     </div>
                 </a>
                 <a href="#">

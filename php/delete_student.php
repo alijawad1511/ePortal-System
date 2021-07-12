@@ -3,8 +3,17 @@ include 'DBManager.php';
 
 $studentId = $_GET['id'];
 
+echo '<script>confirm("Do you really want to delete student?")</script>';
 
-// deleteStudent($studentId);
-// header("Location: http://localhost/ePortal-System/php/manage_students.php",true,301);
-// echo "<script>alert('Student deleted successfully')</script>";
+$query = "UPDATE Students SET account_status = 0 WHERE student_id = $studentId";
+$result = mysqli_query($connection,$query);
+
+if($result){
+    echo '<script>confirm("Student deleted successfully")</script>';
+    ?><script>location.replace("manage_students.php")</script><?php
+}
+
+
+
+
 ?>

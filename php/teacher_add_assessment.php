@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Assessment</title>
+    <title>Add Student Assessment</title>
 
 
     <?php include 'links.php'; ?>
@@ -125,45 +125,51 @@
             </nav>
 
             <div class="card bg-white mb-2 p-4 rounded-0" id="content-wrapper">
-                <h2 class="main-heading text-secondary"><b>Add Assessment</b></h2>
+                <h2 class="main-heading text-secondary"><b>Add Student Assessment</b></h2>
                 <hr class="divider py-2">
 
                 <!-- Form Start -->
-                <form action="add_student.php" method="POST" onsubmit="return validateStudentRegistration()">
+                <form action="add_assessment.php" method="POST">
 
                     <div class="px-5 py-3 mb-5 border" id="assessment-input">
 
-                        <h5 class="text-primary mb-3"><b>Personal Information</b></h5>
+                        <h5 class="text-primary mb-3"><b>Assessment Marks</b></h5>
 
                         <div class="form-group">
-                            <label for="mobileNumber">Assessment Name</label>
-                            <input class="form-control" required type="number" name="studentMobileNo" id="studentMobileNo" placeholder="e.g. 03XXXXXXXXX">
-                            <span class="text-danger font-weight-bold" id="studentMobileNoError"></span>
+                            <label for="studentId">Student ID</label>
+                            <input class="form-control" required type="number" name="studentId" id="studentMobileNo">
+                            <span class="text-danger font-weight-bold" id="studentIdError"></span>
                         </div>
 
                         <div class="form-group">
-                            <label for="cnic">Subject Name</label>
-                            <input class="form-control" required type="text" name="studentCnic" id="studentCnic" placeholder="e.g. XXXXX-XXXXXXX-X">
-                            <span class="text-danger font-weight-bold" id="studentCnicError"></span>
+                            <label for="assessmentName">Assessment Name</label>
+                            <input class="form-control" required type="text" name="assessmentName" id="assessmentName" placeholder="e.g. Monthly Test # 1">
+                            <span class="text-danger font-weight-bold" id="assessmentNameError"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subjectName">Subject Name</label>
+                            <input class="form-control" required type="text" name="subjectName" id="subjectName"  placeholder="e.g. English">
+                            <span class="text-danger font-weight-bold" id="subjectName"></span>
                         </div>
                         
                         <div class="clearfix name-container">
 
                             <div class="form-group float-left">
-                                <label for="firstName">Total Marks</label>
-                                <input type="text" name="studentFirstName" required id="studentFirstName" class="form-control mr-5">
-                                <span class="text-danger font-weight-bold" id="studentFnameError"></span>
+                                <label for="totalMarks">Total Marks</label>
+                                <input type="number" name="totalMarks" required id="totalMarks" class="form-control mr-5" placeholder="e.g. 60">
+                                <span class="text-danger font-weight-bold" id="totalMarksError"></span>
                             </div>
 
                             <div class="form-group float-right">
-                                <label for="studentLastName">Obtain Marks</label>
-                                <input type="text" name="studentLastName" required id="studentLastName" class="form-control">
-                                <span class="text-danger font-weight-bold" id="studentLnameError"></span>
+                                <label for="obtainedMarks">Obtain Marks</label>
+                                <input type="number" name="obtainedMarks" required id="obtainedMarks" class="form-control" placeholder="e.g. 59">
+                                <span class="text-danger font-weight-bold" id="obtainedMarksError"></span>
                             </div>
                         </div>
 
 
-                        <button type="submit" class="btn btn-primary w-100" name='submit'>Add</button>
+                        <button type="submit" class="btn btn-primary w-100" name='submit'>Add Assessment</button>
 
                 </form>
 

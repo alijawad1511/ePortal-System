@@ -10,7 +10,7 @@
     <?php include 'links.php'; ?>
     <script src="../js/logout_dropdown.js"></script>
     <script src="../js/sidebar_showhide.js"></script>
-    <script src="../js/teacher_registration.js"></script>
+    <script src="../js/teacher_registration_validation.js"></script>
 
 </head>
 
@@ -129,7 +129,7 @@
 
             $selected_id = $_GET['id'];
             
-            $query = "SELECT * FROM Teachers where teacher_id = '$selected_id'";
+            $query = "SELECT * FROM Teachers where teacher_id = $selected_id";
             $result = mysqli_query($connection,$query);
             $noOfRows = mysqli_num_rows($result);
             
@@ -144,7 +144,7 @@
                 <hr class="divider py-2">
 
                 <!-- Form Start -->
-                <form action="update_teacher_info.php" method="POST" onsubmit="return validateTeacherRegistration()">
+                <form action="update_teacher_info.php" method="POST" onsubmit="return validation()">
 
                     <div class="px-5 py-3 mb-5 border" id="personal-info">
 
@@ -166,7 +166,7 @@
                         </div>
                         <?php 
                         // Fetching Class Name and Section of Teacher
-                            $query = "SELECT class_name,section FROM Classes WHERE incharge_id = '$selected_id'";
+                            $query = "SELECT class_name,section FROM Classes WHERE incharge_id = $selected_id";
                             $result = mysqli_query($connection,$query);
                             $classData = mysqli_fetch_array($result);
                         ?>
@@ -350,10 +350,10 @@
                                 <span class="text-danger font-weight-bold" id="qualificationError"></span>
                             </div>
                             <div class="form-group float-right">
-                                <label for="Subject">Subject</label>
-                                <input type="text" name="Subject" required id="Subject"
+                                <label for="subject">Subject</label>
+                                <input type="text" name="subject" required id="subject"
                                     class="form-control" value="<?php echo $teacher['subject']?>">
-                                <span class="text-danger font-weight-bold" id="SubjectError"></span>
+                                <span class="text-danger font-weight-bold" id="subjectError"></span>
                             </div>
                         </div>
 
