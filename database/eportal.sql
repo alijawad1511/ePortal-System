@@ -13,10 +13,10 @@ CREATE TABLE `assessments` (
   `student_id` int(11) DEFAULT NULL,
   `assessment_name` varchar(30) DEFAULT NULL,
   `subject_title` varchar(30) DEFAULT NULL,
-  `total_marks` int(11) DEFAULT NULL,
-  `obtained_marks` int(11) DEFAULT NULL,
+  `total_marks` float DEFAULT NULL,
+  `obtained_marks` float DEFAULT NULL,
   `date` date NOT NULL DEFAULT current_timestamp()
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `assessments`
@@ -39,7 +39,7 @@ CREATE TABLE `classes` (
   `class_name` varchar(20) NOT NULL,
   `section` char(1) DEFAULT NULL,
   `incharge_id` int(11) DEFAULT NULL
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `classes`
@@ -50,7 +50,9 @@ INSERT INTO `classes` (`class_name`, `section`, `incharge_id`) VALUES
 ('Five', 'A', 5),
 ('Four', 'A', 1),
 ('Nine', 'A', 4),
+('Nursery', NULL, NULL),
 ('One', 'A', 10),
+('Prep', NULL, NULL),
 ('Seven', 'A', 3),
 ('Six', 'A', 8),
 ('Ten', 'A', 2),
@@ -73,7 +75,7 @@ CREATE TABLE `parents` (
   `address` varchar(100) DEFAULT NULL,
   `occupation` varchar(30) DEFAULT NULL,
   `designation` varchar(30) DEFAULT NULL
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `parents`
@@ -88,10 +90,17 @@ INSERT INTO `parents` (`parent_id`, `first_name`, `last_name`, `mobile_number`, 
 (6, 'Shahid', 'Maqbool', '03004623234', '3520157599745', 'shahid.maqbool@gmail.com', 'Lahore Cantt.', 'Engineer', NULL),
 (7, 'Ijaz', 'Shah', '03004623234', '3520159566745', 'ijaz.shah@gmail.com', 'Lahore Cantt.', 'Electrical Engineer', NULL),
 (8, 'Unknown', 'Unknown', '11223344556', '3520115545783', 'unknown@gmail.com', 'Bata Colony', 'Bata Company', 'Manager'),
-(9, 'Riaz', 'Shah', '11223344556', '3520133784673', 'riaz.shah@gmail.com', 'Multan Pakistan', 'Police', 'Inspector'),
+(9, 'Riaz', 'Ali', '11223344556', '3520133784673', 'riaz.shah@gmail.com', 'Multan Pakistan', 'Police', 'Inspector'),
 (19, 'Ahmad', 'Rashid', '11223344556', '1234567890567', 'ahmad@gmail.com', 'Bata', 'Police', 'Inspector'),
 (22, 'Muhammad', 'Habib', '03009876345', '3520144335673', 'muhammad.habib@gmail.com', 'Unknown Place', 'Unknown', 'Unknown'),
-(23, 'Unknown', 'Person', '03214567834', '3520176123453', 'unknown.person@gmail.com', 'Lahore Pakistan', 'Unknown Occupation', 'NA');
+(23, 'Shafiq', 'Ahmad', '03214567834', '3520176123453', 'unknown.person@gmail.com', 'Lahore Pakistan', 'Unknown Occupation', 'NA'),
+(24, 'Unknown', 'Person', '11223344557', '3520155667773', 'unknownperson@gmail.com', 'Mustafa Town, Lahore', 'sasad', 'adasd'),
+(25, 'Sabir', 'Ali', '03001234876', '3520155443213', 'sabir.ali@gmail.com', 'Lahore Pakistan', 'Teacher', ''),
+(26, 'Ahmad', 'Hassan', '22334455667', '3520188776543', 'ahmad.ali@gmail.com', 'Lahore Pakistan', 'Unknown', ''),
+(27, 'Farooq', 'Ali', '03001234123', '3520113345183', 'farooq.ali@gmail.com', 'Lahore Pakistan', 'Police', ''),
+(28, 'Abdul', 'Sattar', '03214532123', '3520152159993', 'abdul.sattar@gmail.com', 'Lahore Pakistan', 'Pilot', ''),
+(29, 'Muhammad', 'Afzal', '03002134897', '3520144133183', 'muhammad.afzal@gmail.com', 'Faisalabad Pakistan', 'Army Officer', ''),
+(30, 'Zakir', 'Ali', '03009123324', '3520159817773', 'zakir.ali@gmail.com', 'Lahore Pakistan', 'Police', '');
 
 -- --------------------------------------------------------
 
@@ -113,19 +122,27 @@ CREATE TABLE `students` (
   `password` varchar(255) DEFAULT NULL,
   `parent_id` int(11) DEFAULT NULL,
   `account_status` tinyint(1) NOT NULL
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 --
 -- Dumping data for table `students`
 --
 
 INSERT INTO `students` (`student_id`, `first_name`, `last_name`, `class_name`, `mobile_number`, `cnic`, `address`, `gender`, `blood_group`, `email`, `password`, `parent_id`, `account_status`) VALUES
-(1, 'Jawad', 'Shah', 'Ten', '03003435432', '3520181502783', 'Lahore Cantt.', 'Male', 'B+', 'jawad.shah@gmail.com', '1122', 1, 1),
+(1, 'Jawad', 'Shah', 'Ten', '03003435432', '3520181602783', 'Lahore Cantt.', 'Male', 'B+', 'jawad.shah@gmail.com', '$2y$10$Xwxt5.qRcQ8DEAt2U5ctkOdRoH77uo/mK666Xmp5NstAnaeo6tcnu', 1, 1),
 (2, 'Ammar', 'Shah', 'Nine', '03211234321', '3520159322763', 'Lahore Cantt.', 'Male', 'B+', 'ammar.shah@gmail.com', 'Ammar1234@', 1, 1),
 (3, 'Hammad', 'Aslam', 'Nine', '03003456427', '3520133456783', 'Lahore Cantt.', 'Male', 'O-', 'hammad.aslam@gmail.com', '1122', 2, 1),
-(4, 'Adil', 'Shahid', 'Nine', '03071256234', '3520167543783', 'Lahore Cantt.', 'Male', 'A-', 'adil.shahid@gmail.com', 'Adil1234@', 6, 1),
-(19, 'Sheraz', 'Shah', 'Seven', '03001234567', '3520181505683', 'Multan Pakistan', 'Male', 'A+', 'sheraz.shah@gmail.com', 'Sheraz1234@', 9, 1),
+(4, 'Adil', 'Shahid', 'Nine', '03071256234', '3520167543783', 'Lahore Cantt.', 'Male', 'A-', 'adil.shahid@gmail.com', 'Adil1234@', 6, 0),
+(19, 'Sheraz', 'Ali', 'Seven', '03001234567', '3520181505683', 'Multan Pakistan', 'Male', 'A+', 'sheraz.shah@gmail.com', 'Sheraz1234@', 9, 0),
 (20, 'Namra', 'Habib', 'Ten', '03001122654', '3520155667893', 'Lahore Pakistan', 'Female', 'B+', 'namra.habib@gmail.com', '$2y$10$WIvftvUkNAXq9djZ6Vzwc.QD6yL48Cd6aZf5SAGBzKYPo.CNf5yKO', 22, 1),
-(21, 'Muhammad', 'Azeem', 'Ten', '03102345746', '3520177445633', 'Lahore Pakistan', 'Male', 'A-', 'muhammad.azeem@gmail.com', '$2y$10$i5ecG.CIwQT7LMd2AXrqEesciqss9s9t/aZYrQbcmRMU1ZOMsAkNm', 23, 1);
+(21, 'Muhammad', 'Azeem', 'Ten', '03102345746', '3520177445633', 'Lahore Pakistan', 'Male', 'A-', 'muhammad.azeem@gmail.com', '$2y$10$i5ecG.CIwQT7LMd2AXrqEesciqss9s9t/aZYrQbcmRMU1ZOMsAkNm', 23, 1),
+(22, 'Syed Ali', 'Jawad Bukhari', 'Ten', '03214567843', '3520181502783', 'Lahore Pakistan', 'Male', 'B+', 'ali.jawad@gmail.com', '$2y$10$4DFCcjMRDfsczRdapkbqWuwoPbh/oTd5fG4RIo8UpRtM9qlvZsT8C', 1, 1),
+(25, 'Mehroz', 'Mustafa', 'Ten', '11223344557', '3520152157863', 'Mustafa Town, Lahore', 'Male', 'B+', 'mehroz.mustafa@gmail.com', '$2y$10$HNAj2e7gFVytAMLCTo7J1u0iEzg0EK7xcOW6Gmi2Feh89.NJxxJc2', 24, 1),
+(26, 'Fazila', 'Sabir', 'Ten', '03001243567', '3520144223453', 'Lahore Pakistan', 'Female', 'A+', 'fazila.sabir@gmail.com', '$2y$10$Qgeh.D843F2wIQWqWK7X6u7nfZoQDpIwamd4LzvEGMn0KNzWPsZYq', 25, 1),
+(27, 'Umer', 'Farooq', 'Ten', '22334455666', '3520152133223', 'Lahore Pakistan', 'Male', 'A-', 'umer.farooq@gmail.com', '$2y$10$.BN/wlVQ3x.7Zi6Ni9KmhuMh3nXt2b7N101GRIYmLsKv2r6WvUtum', 27, 0),
+(28, 'Amna', 'Sattar', 'Ten', '03214532123', '3520152159993', 'Lahore Pakistan', 'Female', 'A-', 'amna.sattar@gmail.com', '$2y$10$joXlJseP/r0fC64HYlaiAeQ4a4evcNYXD5T2TkOdrNHA1.abRG6PW', 28, 1),
+(29, 'Anam', 'Afzal', 'Nine', '03002345768', '3520144122783', 'Faisalabad Pakistan', 'Female', 'A+', 'anam.afzal@gmail.com', '$2y$10$w3WkGuBIrK6U2rx9GiJuMe4YEGfDB/0zPNRJhfCsB6S89LBtu9FlO', 29, 1),
+(30, 'Iqra', 'Zakir', 'Nine', '03009945324', '3520165523783', 'Lahore Pakistan', 'Female', 'B-', 'iqra.zakir@gmail.com', '$2y$10$Pn92.N/PR49rgOb1gwhfNON4sSpaWugrB0C45LCo9caRj8t6miHEW', 30, 1);
 
 -- --------------------------------------------------------
 
@@ -221,7 +238,7 @@ CREATE TABLE `teachers` (
   `subject` varchar(20) DEFAULT NULL,
   `joining_date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `email` varchar(30) DEFAULT NULL,
-  `password` varchar(30) DEFAULT NULL
+  `password` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -229,17 +246,18 @@ CREATE TABLE `teachers` (
 --
 
 INSERT INTO `teachers` (`teacher_id`, `first_name`, `last_name`, `mobile_number`, `cnic`, `address`, `gender`, `qualification`, `subject`, `joining_date`, `email`, `password`) VALUES
-(1, 'Mustijab', 'Haider', '03001234567', '3520118192783', '', 'Male', 'Mechanical Enginnering', 'Physics', '2021-07-07 10:07:01', 'mustijab.haider@gmail.com', 'Mustijab1234@'),
-(2, 'Rana', 'Waqas', '03001234567', '3520181504563', '', 'Male', 'Software Engineering', 'Computer Science', '2021-07-07 10:08:13', 'rana.waqas@gmail.com', 'Waqas1234@'),
-(3, 'Mehr', 'Nisa', '03214456789', '3520182909843', 'Lahore Pakistan', 'Female', 'BS Arts', 'Drawing', '2021-07-07 10:25:49', 'mehr.nisa@gmail.com', 'MehrNisa1234@'),
-(4, 'Rizwan', 'Bashir', '03001234567', '3520187342783', '', 'Male', 'M.Phil Urdu', 'Urdu', '2021-07-07 10:11:12', 'rizwan.bashir@gmail.com', 'RizwanBashir1234@'),
-(5, 'Mahmood', 'Ali', '03001234567', '3520140632783', '', 'Male', 'M.Phil Mathematics', 'Mathematics', '2021-07-07 10:11:02', 'mahmood.ali@gmail.com', 'MahmoodAli1234@'),
-(6, 'Rehan', 'Ali', '03001234567', '3520184732783', '', 'Male', 'Calligraphy', 'Calligraphy', '2021-07-07 10:10:52', 'rehan.ali@gmail.com', 'RehanAli1234@'),
-(7, 'Ammad', 'Uddin', '03001234567', '3520171402783', '', 'Male', 'M.Phil English', 'English', '2021-07-07 10:10:41', 'ammad.uddin@gmail.com', 'AmmadUddin1234@'),
-(8, 'Jiger', 'Ali', '03001234567', '3520181604783', '', 'Male', 'M.Phil Chemistry', 'Chemistry', '2021-07-07 10:10:33', 'jiger.ali@gmail.com', 'JigerAli1234@'),
-(9, 'Ishfaq', 'Ahmad', '03001234567', '3520188734783', '', 'Male', 'MS Biology', 'Biology', '2021-07-07 10:10:22', 'ishfaq.ahmad@gmail.com', 'IshfaqAhmad1234@'),
-(10, 'Habib', 'Ali', '03001234567', '3520134502783', '', 'Male', 'MS Computer Science', 'Islamiat', '2021-07-07 10:10:15', 'habib.ali@gmail.com', 'HabibAli1234@'),
-(11, 'Faheem', 'Alvi', '03001234567', '3520181832783', '', 'Male', 'MS Pak Studies', 'Pak Studies', '2021-07-07 10:10:06', 'faheem.alvi@gmail.com', 'FaheemAlvi1234@');
+(1, 'Mustijab', 'Haider', '03001234567', '3520118192783', 'Lahore Pakistan', 'Male', 'Mechanical Enginnering', 'Physics', '2021-07-11 16:12:49', 'mustijab.haider@gmail.com', '$2y$10$KuyhEFrcBfhmTsIhgKWmcuVvk74iUkUhmqWwbpBU1JDYUIEq8HvIO'),
+(2, 'Rana', 'Waqas', '03001234567', '3520181504563', 'Lahore Pakistan', 'Male', 'Software Engineering', 'Computer Science', '2021-07-12 07:09:20', 'rana.waqas@gmail.com', '$2y$10$ebvEWqp6XX1T5s0SPhEScORWNhrccq/fLFRjtYJbZItQBLSfE4Kfm'),
+(3, 'Mehr', 'Nisa', '03214456789', '3520182909843', 'Lahore Pakistan', 'Female', 'BS Arts', 'Drawing', '2021-07-12 07:10:07', 'mehr.nisa@gmail.com', '$2y$10$nq6C5dnjkfMlejRt5bmTzukowrm9b4Zhh9V47aM/A8P6chorQ75uy@'),
+(4, 'Rizwan', 'Bashir', '03001234567', '3520187342783', 'Lahore Pakistan', 'Male', 'M.Phil Urdu', 'Urdu', '2021-07-12 07:20:35', 'rizwan.bashir@gmail.com', '$2y$10$LnyDjfuQsFu6bJtOxUImHuPcdtw6iOdKj6yse1..bxERwXkTbKex6'),
+(5, 'Mahmood', 'Ali', '03001234567', '3520140632783', 'Lahore Pakistan', 'Male', 'M.Phil Mathematics', 'Mathematics', '2021-07-11 16:12:56', 'mahmood.ali@gmail.com', 'MahmoodAli1234@'),
+(6, 'Rehan', 'Ali', '03001234567', '3520184732783', 'Lahore Pakistan', 'Male', 'Calligraphy', 'Calligraphy', '2021-07-11 16:12:59', 'rehan.ali@gmail.com', 'RehanAli1234@'),
+(7, 'Ammad', 'Uddin', '03001234567', '3520171402783', 'Lahore Pakistan', 'Male', 'M.Phil English', 'English', '2021-07-11 16:13:02', 'ammad.uddin@gmail.com', 'AmmadUddin1234@'),
+(8, 'Jiger', 'Ali', '03001234567', '3520181604783', 'Lahore Pakistan', 'Male', 'M.Phil Chemistry', 'Chemistry', '2021-07-11 16:13:04', 'jiger.ali@gmail.com', 'JigerAli1234@'),
+(9, 'Ishfaq', 'Ahmad', '03001234567', '3520188734783', 'Lahore Pakistan', 'Male', 'MS Biology', 'Biology', '2021-07-11 16:13:06', 'ishfaq.ahmad@gmail.com', 'IshfaqAhmad1234@'),
+(10, 'Habib', 'Ali', '03001234567', '3520134502783', 'Lahore Pakistan', 'Male', 'MS Computer Science', 'Islamiat', '2021-07-11 16:13:09', 'habib.ali@gmail.com', 'HabibAli1234@'),
+(11, 'Faheem', 'Alvi', '03001234567', '3520181832783', 'Lahore Pakistan', 'Male', 'MS Pak Studies', 'Pak Studies', '2021-07-11 16:13:11', 'faheem.alvi@gmail.com', 'FaheemAlvi1234@'),
+(14, 'Hina', 'Alam', '03001234987', 'Lahore Pakist', '3520115161783', 'Female', 'BS English', 'English', '2021-07-12 18:15:28', 'hina.alam@gmail.com', '$2y$10$b0pnjfsarzVQsvytJkFA5OzYxXmm8U1b/xCRgI.bMpgCUDIf5RcG2');
 
 --
 -- Indexes for dumped tables
@@ -317,13 +335,13 @@ ALTER TABLE `assessments`
 -- AUTO_INCREMENT for table `parents`
 --
 ALTER TABLE `parents`
-  MODIFY `parent_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `parent_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
-  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `subjects`
@@ -335,7 +353,7 @@ ALTER TABLE `subjects`
 -- AUTO_INCREMENT for table `teachers`
 --
 ALTER TABLE `teachers`
-  MODIFY `teacher_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `teacher_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Constraints for dumped tables
@@ -380,3 +398,4 @@ ALTER TABLE `subject_teached`
   ADD CONSTRAINT `subject_teached_ibfk_1` FOREIGN KEY (`subject_id`) REFERENCES `subjects` (`subject_id`),
   ADD CONSTRAINT `subject_teached_ibfk_2` FOREIGN KEY (`teacher_id`) REFERENCES `teachers` (`teacher_id`);
 COMMIT;
+

@@ -6,7 +6,7 @@ if(!isset($_SESSION['currentUserId'])){
     ?><script>
         alert("You are logged out. Please login again");
         location.replace("../index.php");
-    </script><?php   
+    </script><?php  
 }
 
 include 'DBManager.php';
