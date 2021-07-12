@@ -97,7 +97,7 @@
                     </div>
                     <!-- <span class="ml-auto mr-2 font-weight-bold" style="font-size: 20px;">Jawad Shah</span> -->
                     <a class="text-decoration-none">
-                        <img src="../assets/user-profile.jpg" id="user-profile" onclick="showDropdown()" width="40"height="40" class="rounded-circle ml-auto" alt="User Profile">
+                    <img src="../assets/user-profile.jpg" id="user-profile" onclick="showDropdown()" width="40"height="40" class="rounded-circle ml-auto" alt="">
                         <div class="card p-2 bg-white shadow" id="dropdown">
                             <div class="useinfo p-2 mb-2 d-flex">
                                 <div>

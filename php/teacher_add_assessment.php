@@ -5,24 +5,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manage Teachers</title>
+    <title>Add Assessment</title>
+
 
     <?php include 'links.php'; ?>
-    <script src="../js/logout_dropdown.js"></script>
+    <script src="../js/student_registration.js"></script>
     <script src="../js/sidebar_showhide.js"></script>
-    <script src="../js/tableSearch.js"></script>
-    <script src="../js/teacher_registration.js"></script>
-    
+    <script src="../js/logout_dropdown.js"></script>
 
 </head>
 
 <body>
 
-    <?php include 'DBManager.php' ?>
-    
-    
-    
     <!-- Wrapper Start -->
+
+
+
     <div class="wrapper">
 
         <!-- Sidebar Start -->
@@ -41,12 +39,12 @@
                         Dashboard
                     </a>
                 </li>
-                <li><a class="nav-link text-white font-weight-bold px-3 py-3 active" href="manage_teachers.php">
+                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="manage_teachers.php">
                         <i class="fas fa-chalkboard-teacher ml-1 mr-2"></i>
                         Teachers
                     </a>
                 </li>
-                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="manage_students.php">
+                <li><a class="nav-link text-white font-weight-bold px-3 py-3 active">
                         <i class="fas fa-user-graduate ml-1 mr-2"></i>
                         Students
                     </a>
@@ -119,8 +117,7 @@
                             <a href="#" class="nav-link text-dark font-weight-bold"><i class="fa fa-key pr-2"></i> Change
                                 Password</a>
                             <hr class="my-1 color-light">
-                            <a href="#" class="nav-link text-dark font-weight-bold"><i
-                                    class="fas fa-sign-out-alt pr-3"></i>Log
+                            <a href="#" class="nav-link text-dark font-weight-bold"><i class="fas fa-sign-out-alt pr-3"></i>Log
                                 Out</a>
                         </div>
                     </a>
@@ -128,73 +125,52 @@
             </nav>
 
             <div class="card bg-white mb-2 p-4 rounded-0" id="content-wrapper">
-                <h2 class="main-heading text-secondary"><b>Teachers</b></h2>
+                <h2 class="main-heading text-secondary"><b>Add Assessment</b></h2>
                 <hr class="divider py-2">
 
-                <div class="clearfix class-container p-3 border mb-3">
-                    <a href="teacher_registration.php" class="btn btn-success float-left"><i
-                            class="fas fa-user-plus mr-1"></i>Add Teacher</a>
-                    <form action="#" method="GET" class="form-inline ml-auto float-right">
-                        <input class="form-control mr-sm-2" type="search" onkeyup="myFunction()" id="search-keyword" placeholder="Search Here..."
-                            aria-label="Search">
-                        <button class="btn btn-outline-primary my-2 my-sm-0" onclick="validateSearch()" type="submit"
-                            name="search">Search</button>
-                    </form>
-                </div>
+                <!-- Form Start -->
+                <form action="add_student.php" method="POST" onsubmit="return validateStudentRegistration()">
+
+                    <div class="px-5 py-3 mb-5 border" id="assessment-input">
+
+                        <h5 class="text-primary mb-3"><b>Personal Information</b></h5>
+
+                        <div class="form-group">
+                            <label for="mobileNumber">Assessment Name</label>
+                            <input class="form-control" required type="number" name="studentMobileNo" id="studentMobileNo" placeholder="e.g. 03XXXXXXXXX">
+                            <span class="text-danger font-weight-bold" id="studentMobileNoError"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="cnic">Subject Name</label>
+                            <input class="form-control" required type="text" name="studentCnic" id="studentCnic" placeholder="e.g. XXXXX-XXXXXXX-X">
+                            <span class="text-danger font-weight-bold" id="studentCnicError"></span>
+                        </div>
+                        
+                        <div class="clearfix name-container">
+
+                            <div class="form-group float-left">
+                                <label for="firstName">Total Marks</label>
+                                <input type="text" name="studentFirstName" required id="studentFirstName" class="form-control mr-5">
+                                <span class="text-danger font-weight-bold" id="studentFnameError"></span>
+                            </div>
+
+                            <div class="form-group float-right">
+                                <label for="studentLastName">Obtain Marks</label>
+                                <input type="text" name="studentLastName" required id="studentLastName" class="form-control">
+                                <span class="text-danger font-weight-bold" id="studentLnameError"></span>
+                            </div>
+                        </div>
 
 
-                <div class="card table-container overflow-auto bg-light border">
-                    <table class="table table-responsive-lg table-responsive-md table-responsive-sm table-hover" id="table">
-                        <thead class="thead-dark">
-                            <tr>
-                                <th>ID</th>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Contact</th>
-                                <th>Subject</th>
-                                <th>Qualification</th>
-                                <th>View</th>
-                                <th>Edit</th>
-                                <th>Delete</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                                $query = "SELECT * from teachers";
-                                $result = mysqli_query($connection,$query);
-                                $noOfRows = mysqli_num_rows($result);
+                        <button type="submit" class="btn btn-primary w-100" name='submit'>Add</button>
 
-
-                                if($noOfRows>0){
-
-                                    while($teacher = mysqli_fetch_array($result)){  ?>
-                                        <tr>
-                                        <td><?php echo $teacher['teacher_id']; ?></td>
-                                        <td><?php echo $teacher['first_name']." ".$teacher['last_name']; ?></td>
-                                        <td><?php echo $teacher['email']; ?></td>
-                                        <td><?php echo $teacher['mobile_number']; ?></td>
-                                        <td><?php echo $teacher['subject']; ?></td>
-                                        <td><?php echo $teacher['qualification']; ?></td>
-                                        <td class="text-center"><a href="admin_view_teacher.php?id=<?php echo $teacher['teacher_id'];?>" class="text-decoration-none"><i style="color: green;" class="fas fa-eye"></i></a></td>
-                                        <td class="text-center"><a href="edit_teacher.php?id=<?php echo $teacher['teacher_id']; ?>" class="text-decoration-none"><i style="color: rgb(34, 119, 230);" class="far fa-edit"></i></a></td>
-                                        <td class="text-center"><a href="delete_teacher.php?id=<?php echo $teacher['teacher_id'];?>" class="text-decoration-none"><i style="color: red;" class="fas fa-trash"></i></a></td>
-                                        </tr>
-                                   
-                                 <?php
-
-                                    } // while Loop closing
-                                }  // If closing
-
-                            ?>
-
-                        </tbody>
-                    </table>
-                </div>
+                </form>
 
 
             </div>
 
-            <div class="card p-4 bg-white rounded-0" id="footer">
+            <div class="card p-4 bg-white" id="footer">
                 Developed by : <b>Syed Ali Jawad Bukhari</b>
             </div>
 

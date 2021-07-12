@@ -1,18 +1,15 @@
-// Sidebar Show Hide functionality
-<script src="sidebar_showhide.js"></script>
-
-
+console.log("In JS");
 // Validation Function
-function validateTeacherRegistration(){
+function validation(){
 
-    var firstName = document.getElementById('firstName').value;
-    var lastName = document.getElementById('lastName').value;
-    var mobileNumber = document.getElementById('mobileNumber').value;
-    var cnic = document.getElementById('cnic').value;
-    var subject = document.getElementById('subject').value;
-    var email = document.getElementById('email').value;
-    var password = document.getElementById('password').value;
-    var confirmPassword = document.getElementById('confirmPassword').value;
+    let firstName = document.getElementById('firstName').value;
+    let lastName = document.getElementById('lastName').value;
+    let mobileNumber = document.getElementById('mobileNumber').value;
+    let cnic = document.getElementById('cnic').value;
+    let subject = document.getElementById('subject').value;
+    let email = document.getElementById('email').value;
+    let password = document.getElementById('password').value;
+    let confirmPassword = document.getElementById('confirmPassword').value;
 
     // First Name
     if(firstName.match("(.*)[0-9](.*)") || firstName.match("(?=.*[~!@#$%^&*()_-]).*")){
@@ -86,13 +83,11 @@ function validateTeacherRegistration(){
 
     if(password!=confirmPassword){
         document.getElementById('passwordError').innerHTML = `<i class="fas fa-exclamation-circle text-danger"></i> Password and Confirm Password don't match. They should be same.`;
-        document.getElementById('confirmPasswordError').innerHTML = `<i class="fas fa-exclamation-circle text-danger"></i> Password and Confirm Password don't match. They should be same.`;
         console.log("cpass");
         return false;
     }
     else{
         document.getElementById('passwordError').innerHTML = "";
-        document.getElementById('confirmPasswordError').innerHTML = "";
     }
 
 }

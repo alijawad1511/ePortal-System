@@ -149,7 +149,7 @@ function validateStudentRegistration() {
         return false;
     }
     else {
-        document.getElementById('password').innerHTML = "";
+        document.getElementById('passwordError').innerHTML = "";
     }
 
     if (password != confirmPassword) {

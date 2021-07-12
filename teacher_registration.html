@@ -15,7 +15,7 @@
 
     <!-- External CSS Link -->
     <link rel="stylesheet" href="css/style.css">
-    <script src="js/teacher_registration.js"></script>
+    <script src="js/validation.js"></script>
 
 </head>
 
@@ -125,7 +125,7 @@
                 <hr class="divider py-2">
 
                 <!-- Form Start -->
-                <form action="php/add_teacher.php" method="POST" onsubmit="return validateTeacherRegistration()">
+                <form action="#" method="POST" onsubmit="return validation()">
 
                     <div class="px-5 py-3 mb-5 border" id="personal-info">
 
@@ -134,13 +134,13 @@
                         <div class="clearfix name-container">
                             <div class="form-group float-left">
                                 <label for="firstName">First Name</label>
-                                <input type="text" name="firstName" required id="firstName"
+                                <input type="text" name="firstName" id="firstName"
                                     class="form-control mr-5">
                                 <span class="text-danger font-weight-bold" id="firstNameError"></span>
                             </div>
                             <div class="form-group float-right">
                                 <label for="lastName">Last Name</label>
-                                <input type="text" name="lastName" required id="lastName"
+                                <input type="text" name="lastName" id="lastName"
                                     class="form-control">
                                 <span class="text-danger font-weight-bold" id="lastNameError"></span>
                             </div>
@@ -149,7 +149,7 @@
                         <div class="clearfix class-container">
                             <div class="form-group float-left">
                                 <label for="class">Class</label>
-                                <select class="form-control" name="class" id="class" required>
+                                <select class="form-control" name="class" id="class">
                                     <option value="">--Select Your Class--</option>
                                     <option value="Nursery">Nursery</option>
                                     <option value="Prep">Prep</option>
@@ -168,7 +168,7 @@
                             </div>
                             <div class="form-group float-right">
                                 <label for="section">Section</label>
-                                <select class="form-control" name="section" id="section" required>
+                                <select class="form-control" name="section" id="section">
                                     <option value="">--Select Class--</option>
                                     <option value="A">A</option>
                                     <option value="B">B</option>
@@ -197,21 +197,21 @@
 
                         <div class="form-group">
                             <label for="mobileNumber">Mobile Number</label>
-                            <input class="form-control" required type="number" name="mobileNumber"
+                            <input class="form-control" type="text" name="mobileNumber"
                                 id="mobileNumber" placeholder="e.g. 03XX-XXXXXXX">
                             <span class="text-danger font-weight-bold" id="mobileNumberError"></span>
                         </div>
 
                         <div class="form-group">
                             <label for="cnic">CNIC (National Identity Card)</label>
-                            <input class="form-control" required type="text" name="cnic" id="cnic"
+                            <input class="form-control" type="text" name="cnic" id="cnic"
                                 placeholder="e.g. XXXXX-XXXXXXX-X">
                             <span class="text-danger font-weight-bold" id="cnicError"></span>
                         </div>
 
                         <div class="form-group">
                             <label for="address">Address</label>
-                            <textarea class="form-control" required name="address" id="address"
+                            <textarea class="form-control" name="address" id="address"
                                 rows="3"></textarea>
                         </div>
 
@@ -224,15 +224,15 @@
                         <div class="clearfix name-container">
                             <div class="form-group float-left">
                                 <label for="qualification">Qualification</label>
-                                <input type="text" name="qualification" required id="qualification"
+                                <input type="text" name="qualification" id="qualification"
                                     class="form-control mr-5">
                                 <span class="text-danger font-weight-bold" id="qualificationError"></span>
                             </div>
                             <div class="form-group float-right">
-                                <label for="Subject">Subject</label>
-                                <input type="text" name="Subject" required id="Subject"
+                                <label for="subject">Subject</label>
+                                <input type="text" name="subject" id="subject"
                                     class="form-control">
-                                <span class="text-danger font-weight-bold" id="SubjectError"></span>
+                                <span class="text-danger font-weight-bold" id="subjectError"></span>
                             </div>
                         </div>
 
@@ -244,22 +244,20 @@
 
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input class="form-control" required type="email" name="email" id="email"
-                                placeholder="yourname@gmail.com">
+                            <input class="form-control" type="email" name="email" id="email" placeholder="yourname@gmail.com">
                             <span class="text-danger font-weight-bold" id="emailError"></span>
                         </div>
 
                         <div class="form-group">
                             <label for="password">Password</label>
-                            <input class="form-control" required type="password" name="password" id="password">
+                            <input class="form-control" type="password" name="password" id="password">
                             <span class="text-danger font-weight-bold" id="passwordError"></span>
                         </div>
 
                         <div class="form-group">
                             <label for="confirmPassword">Confirm Password</label>
-                            <input class="form-control" required type="password" name="confirmPassword"
+                            <input class="form-control" type="password" name="confirmPassword"
                                 id="confirmPassword">
-                            <span class="text-danger font-weight-bold" id="confirmPasswordError"></span>
                         </div>
 
                     </div>
