@@ -180,13 +180,13 @@
                         <div class="form-group my-2">
                             <label for="gender" class="mr-5">Gender</label>
                             <div class="form-check-inline">
-                                <input class="form-check-input" type="radio" name="gender" id="maleOption" value="m">
+                                <input class="form-check-input" type="radio" name="gender" id="maleOption" value="Male">
                                 <label class="form-check-label font-weight-normal" for="maleOption">
                                     Male
                                 </label>
                             </div>
                             <div class="form-check-inline">
-                                <input class="form-check-input" type="radio" name="gender" id="femaleOption" value="f">
+                                <input class="form-check-input" type="radio" name="gender" id="femaleOption" value="Female">
                                 <label class="form-check-label font-weight-normal" for="femaleOption">
                                     Female
                                 </label>
