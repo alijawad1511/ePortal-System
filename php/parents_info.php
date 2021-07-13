@@ -1,6 +1,17 @@
-<?php 
+<?php
 session_start();
+
+if(!isset($_SESSION['currentUserId'])){
+
+    ?><script>
+        alert("You are logged out. Please login again");
+        location.replace("../index.php");
+    </script><?php   
+}
+
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,6 +32,10 @@ session_start();
     <?php 
         include 'DBManager.php';
         $teacherID = $_SESSION['currentUserId'];
+        $query = "SELECT * from teachers where teacher_id = $teacherID";
+        $result = mysqli_query($connection,$query);
+        $teacherInfo = mysqli_fetch_array($result);        
+
     ?>
     
 
@@ -38,8 +53,9 @@ session_start();
             <hr class="my-3 sidebar-separator" style="background-color: rgba(255, 255, 255, 0.562);">
 
             <!-- Navigation -->
+            
             <ul>
-                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="teacher_dasboard.php">
+                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="teacher_dashboard.php">
                         <i class="fas fa-tachometer-alt ml-1 mr-2"></i>
                         Dashboard
                     </a>
@@ -64,7 +80,7 @@ session_start();
                         Subjects
                     </a>
                 </li>
-                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="#">
+                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="student_assessments.php">
                         <i class="fas fa-award ml-1 mr-2"></i>
                         Assessments
                     </a>
@@ -113,7 +129,7 @@ session_start();
                                 Change Password</a>
 
                             <hr class="my-1 color-light">
-                            <a href="#" class="nav-link text-dark font-weight-bold"><i
+                            <a href="logout.php" class="nav-link text-dark font-weight-bold"><i
                                     class="fas fa-sign-out-alt pr-3"></i>Log
                                 Out</a>
                         </div>
