@@ -10,12 +10,6 @@ if(isset($_POST['submit'])){
     $totalMarks = $_POST['totalMarks'];
     $obtainedMarks = $_POST['obtainedMarks'];
 
-    echo var_dump($studentId);
-    echo var_dump($assessmentName);
-    echo var_dump($subjectName);
-    echo var_dump($totalMarks);
-    echo var_dump($obtainedMarks);
-
     $query = "INSERT INTO Assessments(student_id,assessment_name,subject_title,total_marks,obtained_marks) VALUES($studentId,'$assessmentName','$subjectName',$totalMarks,$obtainedMarks)";
     $result = mysqli_query($connection,$query);
     if($result){
