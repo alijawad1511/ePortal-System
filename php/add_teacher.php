@@ -22,9 +22,13 @@ if (isset($_POST['submit'])) {
     
     if ($result) {
 
-        echo "<script>alert('Teacher registered successfully!')</script>";
-        header("Location: manage_teachers.php");
+        echo '<script>confirm("Student deleted successfully")</script>';
+        ?><script>location.replace("manage_students.php")</script><?php
+        
     } else {
-        echo "<script>alert('Error! Teacher not registered successfully!')</script>";
+        echo "<script>alert('Error! Teacher already exists')</script>";
+        ?><script>location.replace("manage_students.php")</script><?php
     }
 }
+
+?>
