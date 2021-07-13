@@ -231,7 +231,7 @@ if (!isset($_SESSION['currentUserId'])) {
                                 $result = mysqli_query($connection, $query);
                                 $noOfRows = mysqli_num_rows($result);
                             } else {
-                                $query = "SELECT parent_id,first_name,last_name,email,mobile_number from parents where parent_id in (SELECT parent_id from students where class_name = (SELECT class_name from classes where incharge_id = $teacherID))";
+                                $query = "SELECT parent_id,first_name,last_name,email,mobile_number from parents where parent_id in (SELECT parent_id from students where class_name = (SELECT class_name from classes where incharge_id = $teacherID) and account_status = 1)";
                                 $result = mysqli_query($connection, $query);
                                 $noOfRows = mysqli_num_rows($result);
                             }
