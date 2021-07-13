@@ -1,5 +1,6 @@
 <?php
 session_start(); 
+
 ?>
 
 <!DOCTYPE html>
@@ -45,7 +46,7 @@ session_start();
 
             // $hashCode = password_hash($passwrod, PASSWORD_BCRYPT);
 
-            $query = "SELECT teacher_id,password from Teachers where email = '$email'";
+            $query = "SELECT teacher_id,password,account_status from Teachers where email = '$email'";
             $result = mysqli_query($connection, $query);
             $rows = mysqli_num_rows($result);
 
@@ -55,13 +56,18 @@ session_start();
                 $userInfo = mysqli_fetch_array($result);
                 $verify = password_verify($password, $userInfo['password']);
 
-                if ($verify) {
+                if ($verify && $userInfo['account_status']) {
                     $_SESSION['currentUserId'] = $userInfo['teacher_id'];
                     header("Location: php/teacher_dashboard.php");
+                }else{
+                    // set display property for alert on wrong credential
+                    $alertMsg = "d-block";
                 }
+
+
             } else {
 
-                $query = "SELECT student_id, password from Students where email = '$email'";
+                $query = "SELECT student_id, password, account_status from Students where email = '$email'";
                 $result = mysqli_query($connection, $query);
                 $rows = mysqli_num_rows($result);
 
@@ -69,7 +75,7 @@ session_start();
                     $userInfo = mysqli_fetch_array($result);
                     $verify = password_verify($password, $userInfo['password']);
 
-                    if ($verify) {
+                    if ($verify && $userInfo['account_status']) {
 
                         $_SESSION['currentUserId'] = $userInfo['student_id'];
                         header("Location: php/student_dashboard.php");

@@ -201,8 +201,7 @@ if(!isset($_SESSION['currentUserId'])){
             </div>
 
             <div class="card p-4 bg-white" id="footer">
-                Developed by : <b>Syed Ali Jawad Bukhari</b>
-                <?php echo $_SESSION['currentUserId']; ?>
+                Developed by : <b>Syed Ali Jawad Bukhari</b>S
             </div>
 
 

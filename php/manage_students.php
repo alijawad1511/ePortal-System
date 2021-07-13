@@ -172,7 +172,7 @@ if(!isset($_SESSION['currentUserId'])){
                         </thead>
                         <tbody>
                             <?php
-                            $query = "SELECT * from students";
+                            $query = "SELECT * from students where account_status = 1";
                             $result = mysqli_query($connection,$query);
                             $noOfRows = mysqli_num_rows($result);
 
