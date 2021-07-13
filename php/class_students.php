@@ -154,7 +154,7 @@
                         </thead>
                         <tbody>
                             <?php
-                            $query = "SELECT student_id,first_name,last_name,class_name,email,mobile_number,parent_id from Students where class_name = (select class_name from classes where incharge_id = $teacherID)";
+                            $query = "SELECT student_id,first_name,last_name,class_name,email,mobile_number,parent_id from Students where class_name = (select class_name from classes where incharge_id = $teacherID) and account_status = 1";
                             $result = mysqli_query($connection,$query);
                             $noOfRows = mysqli_num_rows($result);
 
