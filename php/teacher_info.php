@@ -152,7 +152,7 @@ if(!isset($_SESSION['currentUserId'])){
                 <div class="card bg-white p-5 mb-3">
                     <div class="row">
                         <div class="col-4">
-                            <img src="../assets/user-icon.png" alt="Profile" width="200" height="200">
+                            <img src="../assets/teacher1.jpg" alt="Profile" width="230" height="230">
                         </div>
                         <div class="col-8">
                             <div class="row mb-2 bg-light">

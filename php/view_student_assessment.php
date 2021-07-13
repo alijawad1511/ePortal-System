@@ -34,7 +34,6 @@ if(!isset($_SESSION['currentUserId'])){
 
 
 <?php
-        session_start();
         include 'connection.php';
         
         $teacherID = $_SESSION['currentUserId'];
@@ -62,7 +61,7 @@ if(!isset($_SESSION['currentUserId'])){
 
             <!-- Navigation -->
             <ul>
-                <li><a class="nav-link text-white font-weight-bold px-3 py-3 active">
+                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="teacher_dashboard.php">
                         <i class="fas fa-tachometer-alt ml-1 mr-2"></i>
                         Dashboard
                     </a>
@@ -87,7 +86,7 @@ if(!isset($_SESSION['currentUserId'])){
                         Subjects
                     </a>
                 </li>
-                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="#">
+                <li><a class="nav-link text-white font-weight-bold px-3 py-3 active">
                         <i class="fas fa-copy ml-1 mr-2"></i>
                         Assessments
                     </a>
@@ -167,12 +166,14 @@ if(!isset($_SESSION['currentUserId'])){
                             <?php
 
 
-                            $query = "SELECT S.first_name,S.last_name,class_name,assessment_name,subject_title,total_marks,obtained_marks from Students as S,Assessments as A WHERE A.student_id = S.student_id and S.class_name = (SELECT class_name from classes where incharge_id = $teacherID) and S.student_id = $studentID";
+                            $query = "SELECT S.first_name,S.last_name,class_name,assessment_id,assessment_name,subject_title,total_marks,obtained_marks from Students as S,Assessments as A WHERE A.student_id = S.student_id and S.class_name = (SELECT class_name from classes where incharge_id = $teacherID) and S.student_id = $studentID";
                             $result = mysqli_query($connection,$query);
                             $noOfRows = mysqli_num_rows($result);
 
 
                             if($noOfRows>0){
+
+                                $_SESSION['studentId'] = $studentID;
 
                                 while($assessment = mysqli_fetch_array($result)){  ?>
                                     <tr>
@@ -180,19 +181,16 @@ if(!isset($_SESSION['currentUserId'])){
                                     <td><?php echo $assessment['assessment_name']; ?></td>
                                     <td><?php echo $assessment['subject_title']; ?></td>
                                     <td><?php echo $assessment['class_name']; ?></td>
-                                    <td><?php echo $assessment['total_marks']; ?></td>
-                                    <td><?php echo $assessment['obtained_marks']; ?></td>
-                                    <td class="text-center"><a href="edit_assessment.php?id=<?php echo $student['student_id'];?>"><i style="color: rgb(34, 119, 230);" class="far fa-edit"></i></a></td>
-                                    <td class="text-center"><a href="delete_assessment.php?id=<?php echo $student['student_id'];?>"><i style="color: red;" class="fas fa-trash"></i></a></td>
+                                    <td class="text-center"><?php echo $assessment['total_marks']; ?></td>
+                                    <td class="text-center"><?php echo $assessment['obtained_marks']; ?></td>
+                                    <td class="text-center"><a href="edit_assessment_form.php?id=<?php echo $assessment['assessment_id']; ?>"><i style="color: rgb(34, 119, 230);" class="far fa-edit"></i></a></td>
+                                    <td class="text-center"><a href="delete_assessment.php?id=<?php echo $assessment['assessment_id']; ?>"><i style="color: red;" class="fas fa-trash"></i></a></td>
                                     </tr>
                                
                              <?php
 
                                 } // while Loop closing
                             }  // If closing
-                            else{
-                                echo '<script>alert("Sorry! This Student has no Assessments")</script>';
-                            }
 
                         ?>
                         </tbody>

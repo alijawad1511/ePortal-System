@@ -35,7 +35,6 @@ if(!isset($_SESSION['currentUserId'])){
 
 
 <?php
-        session_start();
         include 'connection.php';
         
         $teacherID = $_SESSION['currentUserId'];
