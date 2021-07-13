@@ -1,6 +1,17 @@
-<?php 
+<?php
 session_start();
+
+if(!isset($_SESSION['currentUserId'])){
+
+    ?><script>
+        alert("You are logged out. Please login again");
+        location.replace("../index.php");
+    </script><?php   
+}
+
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,6 +32,10 @@ session_start();
     <?php 
         include 'DBManager.php';
         $teacherID = $_SESSION['currentUserId'];
+        $query = "SELECT * from teachers where teacher_id = $teacherID";
+        $result = mysqli_query($connection,$query);
+        $teacherInfo = mysqli_fetch_array($result);        
+
     ?>
     
 
