@@ -33,7 +33,7 @@ if(!isset($_SESSION['currentUserId'])){
     
     <!-- Php Code -->
     <?php 
-        session_start();
+        
         include 'DBManager.php';
 
         $teacherID = $_SESSION['currentUserId'];
