@@ -127,7 +127,7 @@ if(!isset($_SESSION['currentUserId'])){
                             <a href="#" class="nav-link text-dark font-weight-bold"><i class="fa fa-key pr-2"></i> Change
                                 Password</a>
                             <hr class="my-1 color-light">
-                            <a href="#" class="nav-link text-dark font-weight-bold"><i
+                            <a href="logout.php" class="nav-link text-dark font-weight-bold"><i
                                     class="fas fa-sign-out-alt pr-3"></i>Log
                                 Out</a>
                         </div>
