@@ -152,7 +152,7 @@ if(!isset($_SESSION['currentUserId'])){
                 <div class="card bg-white p-5 mb-3">
                     <div class="row">
                         <div class="col-4">
-                            <img src="../assets/user-icon.png" alt="Profile" width="200" height="200">
+                            <img src="../assets/teacher1.jpg" alt="Profile" width="200" height="200">
                         </div>
                         <div class="col-8">
                             <div class="row mb-2 bg-light">
@@ -229,26 +229,24 @@ if(!isset($_SESSION['currentUserId'])){
                         <div class="form-group">
                             <label for="oldPassword">Old Password</label>
                             <input class="form-control" required type="password" name="oldPassword" id="oldPassword">
-                            <span class="text-danger font-weight-bold" id="passwordError"></span>
+                            <span class="text-danger font-weight-bold" id="oldPasswordError"></span>
                         </div>
 
                         <div class="form-group">
                             <label for="newPassword">New Password</label>
                             <input class="form-control" required type="password" name="newPassword" id="newPassword">
-                            <span class="text-danger font-weight-bold" id="passwordError"></span>
+                            <span class="text-danger font-weight-bold" id="newPasswordError"></span>
                         </div>
 
                         <div class="form-group">
                             <label for="confirmPassword">Confirm Password</label>
                             <input class="form-control" required type="password" name="confirmPassword"
                                 id="confirmPassword">
-                            <span class="text-danger font-weight-bold" id="confirmPassword"></span>
+                            <span class="text-danger font-weight-bold" id="confirmPasswordError"></span>
                         </div>
-                    </form>
-                </div>
 
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-success" data-dismiss="modal">Save Changes</button>
+                        <button type="button" class="btn btn-success w-100 mt-3" data-dismiss="modal">Save Changes</button>
+                    </form>
                 </div>
 
             </div>

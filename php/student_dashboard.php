@@ -214,72 +214,30 @@ if(!isset($_SESSION['currentUserId'])){
                         <div class="form-group">
                             <label for="oldPassword">Old Password</label>
                             <input class="form-control" required type="password" name="oldPassword" id="oldPassword">
-                            <span class="text-danger font-weight-bold" id="passwordError"></span>
+                            <span class="text-danger font-weight-bold" id="oldPasswordError"></span>
                         </div>
 
                         <div class="form-group">
                             <label for="newPassword">New Password</label>
                             <input class="form-control" required type="password" name="newPassword" id="newPassword">
-                            <span class="text-danger font-weight-bold" id="passwordError"></span>
+                            <span class="text-danger font-weight-bold" id="newPasswordError"></span>
                         </div>
 
                         <div class="form-group">
                             <label for="confirmPassword">Confirm Password</label>
                             <input class="form-control" required type="password" name="confirmPassword"
                                 id="confirmPassword">
-                            <span class="text-danger font-weight-bold" id="confirmPassword"></span>
+                            <span class="text-danger font-weight-bold" id="confirmPasswordError"></span>
                         </div>
-                    </form>
-                </div>
 
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-success" data-dismiss="modal">Save Changes</button>
+                        <button type="button" class="btn btn-success w-100 mt-3" data-dismiss="modal">Save Changes</button>
+                    </form>
                 </div>
 
             </div>
         </div>
     </div>
     <!-- Wrapper End     -->
-
-    <div class="modal" id="changePasswordWindow">
-        <div class="modal-dialog">
-            <div class="modal-content">
-
-                <div class="modal-header">
-                    <h3 class="text-primary font-weight-bold">Change Password</h3>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-
-                <div class="modal-body">
-                    <form action="#" method="POST">
-                        <div class="form-group">
-                            <label for="oldPassword">Old Password</label>
-                            <input class="form-control" required type="password" name="oldPassword" id="oldPassword">
-                            <span class="text-danger font-weight-bold" id="passwordError"></span>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="newPassword">New Password</label>
-                            <input class="form-control" required type="password" name="newPassword" id="newPassword">
-                            <span class="text-danger font-weight-bold" id="passwordError"></span>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="confirmPassword">Confirm Password</label>
-                            <input class="form-control" required type="password" name="confirmPassword"
-                                id="confirmPassword">
-                            <span class="text-danger font-weight-bold" id="confirmPassword"></span>
-                        </div>
-                    </form>
-                </div>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-success" data-dismiss="modal">Save Changes</button>
-                </div>
-
-            </div>
-        </div>
-    </div>
 
 </body>
 
