@@ -131,7 +131,7 @@ if(!isset($_SESSION['currentUserId'])){
                                         Student</div>
                                 </div>
                             </div>
-                            <a href="change_password_form.php" class="nav-link text-dark font-weight-bold"
+                            <a href="change_student_password_form.php" class="nav-link text-dark font-weight-bold"
                                 ><i class="fa fa-key pr-2"></i>
                                 Change Password</a>
 
