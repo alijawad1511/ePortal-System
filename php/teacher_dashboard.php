@@ -126,8 +126,8 @@ if(!isset($_SESSION['currentUserId'])){
                                         Teacher</div>
                                 </div>
                             </div>
-                            <a href="#" onclick="changePassword()" class="nav-link text-dark font-weight-bold"
-                                data-target="#changePasswordWindow" data-toggle="modal"><i class="fa fa-key pr-2"></i>
+                            <a href="change_teacher_password_form.php" class="nav-link text-dark font-weight-bold"
+                                ><i class="fa fa-key pr-2"></i>
                                 Change Password</a>
 
                             <hr class="my-1 color-light">
@@ -203,7 +203,7 @@ if(!isset($_SESSION['currentUserId'])){
                 </div>
 
                 <div class="modal-body">
-                    <form action="#" method="POST">
+                    <form action="change_teacher_password_form" onsubmit="return changePasswordValidation()" method="POST">
                         <div class="form-group">
                             <label for="oldPassword">Old Password</label>
                             <input class="form-control" required type="password" name="oldPassword" id="oldPassword">

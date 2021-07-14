@@ -4,20 +4,20 @@ include 'DBManager.php';
 
 if(isset($_POST['submit'])){
 
-    $studentId = $_SESSION['currentUserId'];
+    $teacherId = $_SESSION['currentUserId'];
 
     $oldPassword = $_POST['oldPassword'];
     $newPassword = $_POST['newPassword'];
     $confirmPassword = $_POST['confirmPassword'];
 
-    $query = "SELECT password from Students WHERE student_id = $studentId";
+    $query = "SELECT password from Teachers WHERE teacher_id = $teacherId";
     $result = mysqli_query($connection,$query);
 
     if($result){
 
-        $studentInfo = mysqli_fetch_array($result);
+        $teacherInfo = mysqli_fetch_array($result);
 
-        $verify = password_verify($oldPassword,$studentInfo['password']);
+        $verify = password_verify($oldPassword,$teacherInfo['password']);
         
         if($verify){
 
@@ -26,7 +26,7 @@ if(isset($_POST['submit'])){
             echo '<script>confirm("Do you really want to change password?")</script>';
         
             
-            $query = "UPDATE Students SET password = '$newPasswordHash' WHERE student_id = $studentId";
+            $query = "UPDATE Teachers SET password = '$newPasswordHash' WHERE teacher_id = $teacherId";
             $result = mysqli_query($connection,$query);
             if($result){
                 ?>
@@ -48,7 +48,7 @@ if(isset($_POST['submit'])){
             ?>
                 <script>
                     alert("Wrong Password! Enter your old password first to change password");
-                    location.replace("change_student_password_form.php");
+                    location.replace("change_teacher_password_form.php");
                 </script>
             <?php
         }
