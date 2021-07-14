@@ -1,16 +1,16 @@
 <?php
 session_start();
 
-if(!isset($_SESSION['currentUserId'])){
+if (!isset($_SESSION['currentUserId'])) {
 
-    ?><script>
+?><script>
         alert("You are logged out. Please login again");
         location.replace("../index.php");
-    </script><?php   
-}
+    </script><?php
+            }
 
 
-?>
+                ?>
 
 
 
@@ -30,17 +30,17 @@ if(!isset($_SESSION['currentUserId'])){
 </head>
 
 <body>
-    
+
     <!-- Php Code -->
-    <?php 
-        
-        include 'DBManager.php';
+    <?php
 
-        $teacherID = $_SESSION['currentUserId'];
+    include 'DBManager.php';
 
-        $query = "SELECT * from Teachers WHERE teacher_id = $teacherID";
-        $result = mysqli_query($connection,$query);
-        $teacherInfo = mysqli_fetch_array($result);
+    $teacherID = $_SESSION['currentUserId'];
+
+    $query = "SELECT * from Teachers WHERE teacher_id = $teacherID";
+    $result = mysqli_query($connection, $query);
+    $teacherInfo = mysqli_fetch_array($result);
 
     ?>
 
@@ -107,35 +107,30 @@ if(!isset($_SESSION['currentUserId'])){
             <nav class="navbar mb-2 navbar-light bg-light mb-2">
                 <div class="container-fluid">
                     <div class="navbar-header">
-                        <button type="button" id="sidebar-toggle" onclick="hideSidebar()"
-                            class="btn btn-info navbar-btn mr-auto">
+                        <button type="button" id="sidebar-toggle" onclick="hideSidebar()" class="btn btn-info navbar-btn mr-auto">
                             <i class="fa fa-bars" aria-hidden="true"></i>
                         </button>
                     </div>
                     <!-- <span class="ml-auto mr-2 font-weight-bold" style="font-size: 20px;">Jawad Shah</span> -->
                     <a class="text-decoration-none">
-                        <img src="../assets/user-profile.jpg" id="user-profile" onclick="showDropdown()" width="40"
-                            height="40" class="rounded-circle ml-auto" alt="">
+                        <img src="../assets/user-profile.jpg" id="user-profile" onclick="showDropdown()" width="40" height="40" class="rounded-circle ml-auto" alt="">
                         <div class="card p-2 bg-white shadow" id="dropdown">
                             <div class="useinfo p-2 mb-2 d-flex">
                                 <div>
-                                    <img src="../assets/user-icon.png" class="rounded-circle mr-3" width="50"
-                                        height="50">
+                                    <img src="../assets/user-icon.png" class="rounded-circle mr-3" width="50" height="50">
                                 </div>
                                 <div>
                                     <div class="text-primary font-weight-bold" id="username" style="font-size: 18px;">
-                                        <?php echo $teacherInfo['first_name']." ".$teacherInfo['last_name']; ?> </div>
+                                        <?php echo $teacherInfo['first_name'] . " " . $teacherInfo['last_name']; ?> </div>
                                     <div class="text-muted font-weight-bold" id="user-id" style="font-size: 14px;">
                                         Teacher</div>
                                 </div>
                             </div>
-                            <a href="#" onclick="changePassword()" class="nav-link text-dark font-weight-bold"
-                                data-target="#changePasswordWindow" data-toggle="modal"><i class="fa fa-key pr-2"></i>
+                            <a href="#" onclick="changePassword()" class="nav-link text-dark font-weight-bold" data-target="#changePasswordWindow" data-toggle="modal"><i class="fa fa-key pr-2"></i>
                                 Change Password</a>
 
                             <hr class="my-1 color-light">
-                            <a href="logout.php" class="nav-link text-dark font-weight-bold"><i
-                                    class="fas fa-sign-out-alt pr-3"></i>Log
+                            <a href="logout.php" class="nav-link text-dark font-weight-bold"><i class="fas fa-sign-out-alt pr-3"></i>Log
                                 Out</a>
                         </div>
                     </a>
@@ -148,7 +143,7 @@ if(!isset($_SESSION['currentUserId'])){
             </div>
 
             <div class="card bg-white mb-2 p-4 rounded-0" id="content-wrapper">
-                
+
                 <div class="card bg-white p-5 mb-3">
                     <div class="row">
                         <div class="col-4">
@@ -158,7 +153,7 @@ if(!isset($_SESSION['currentUserId'])){
                             <div class="row mb-2 bg-light">
                                 <div class="col-6">
                                     <label class="font-weight-bold text-black d-block">Name</label>
-                                    <span class="text-muted"><?php echo $teacherInfo['first_name']." ".$teacherInfo['last_name']; ?></span>
+                                    <span class="text-muted"><?php echo $teacherInfo['first_name'] . " " . $teacherInfo['last_name']; ?></span>
                                 </div>
                                 <div class="col-6">
                                     <label class="font-weight-bold text-black d-block">Gender</label>
@@ -212,6 +207,43 @@ if(!isset($_SESSION['currentUserId'])){
         <!-- Content End -->
 
 
+    </div>
+
+    <div class="modal" id="changePasswordWindow">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h3 class="text-primary font-weight-bold">Change Password</h3>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <div class="modal-body">
+                    <form action="#" method="POST">
+                        <div class="form-group">
+                            <label for="oldPassword">Old Password</label>
+                            <input class="form-control" required type="password" name="oldPassword" id="oldPassword">
+                            <span class="text-danger font-weight-bold" id="oldPasswordError"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="newPassword">New Password</label>
+                            <input class="form-control" required type="password" name="newPassword" id="newPassword">
+                            <span class="text-danger font-weight-bold" id="newPasswordError"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="confirmPassword">Confirm Password</label>
+                            <input class="form-control" required type="password" name="confirmPassword" id="confirmPassword">
+                            <span class="text-danger font-weight-bold" id="confirmPasswordError"></span>
+                        </div>
+
+                        <button type="button" class="btn btn-success w-100 mt-3" data-dismiss="modal">Save Changes</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
     </div>
     <!-- Wrapper End     -->
 

@@ -210,6 +210,44 @@ if(!isset($_SESSION['currentUserId'])){
 
 
     </div>
+
+    <div class="modal" id="changePasswordWindow">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h3 class="text-primary font-weight-bold">Change Password</h3>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <div class="modal-body">
+                    <form action="#" method="POST">
+                        <div class="form-group">
+                            <label for="oldPassword">Old Password</label>
+                            <input class="form-control" required type="password" name="oldPassword" id="oldPassword">
+                            <span class="text-danger font-weight-bold" id="oldPasswordError"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="newPassword">New Password</label>
+                            <input class="form-control" required type="password" name="newPassword" id="newPassword">
+                            <span class="text-danger font-weight-bold" id="newPasswordError"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="confirmPassword">Confirm Password</label>
+                            <input class="form-control" required type="password" name="confirmPassword"
+                                id="confirmPassword">
+                            <span class="text-danger font-weight-bold" id="confirmPasswordError"></span>
+                        </div>
+
+                        <button type="button" class="btn btn-success w-100 mt-3" data-dismiss="modal">Save Changes</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
     <!-- Wrapper End     -->
 
 </body>

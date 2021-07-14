@@ -51,22 +51,22 @@ if(!isset($_SESSION['currentUserId'])){
 
             <!-- Navigation -->
             <ul>
-                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="admin_dashboard.php">
+                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="teacher_dashboard.php">
                         <i class="fas fa-tachometer-alt ml-1 mr-2"></i>
                         Dashboard
                     </a>
                 </li>
-                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="manage_teachers.php">
+                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="teacher_info.php?id=<?php echo $teacherID;?>">
                         <i class="fas fa-chalkboard-teacher ml-1 mr-2"></i>
-                        Teachers
+                        Personal Info
                     </a>
                 </li>
-                <li><a class="nav-link text-white font-weight-bold px-3 py-3 active">
+                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="class_students.php">
                         <i class="fas fa-user-graduate ml-1 mr-2"></i>
                         Students
                     </a>
                 </li>
-                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="manage_parents.php">
+                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="parents_info.php">
                         <i class="fa fa-group ml-1 mr-2"></i>
                         Parents
                     </a>
@@ -76,29 +76,14 @@ if(!isset($_SESSION['currentUserId'])){
                         Subjects
                     </a>
                 </li>
-                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="#">
-                        <i class="fas fa-award ml-1 mr-2"></i>
+                <li><a class="nav-link text-white font-weight-bold px-3 py-3 active">
+                        <i class="fas fa-copy ml-1 mr-2"></i>
                         Assessments
                     </a>
                 </li>
                 <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="#">
                         <i class="fa fa-chart-bar ml-1 mr-2"></i>
                         Results
-                    </a>
-                </li>
-                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="#">
-                        <i class="fa fa-money-check-alt ml-1 mr-2"></i>
-                        Payments
-                    </a>
-                </li>
-                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="#">
-                        <i class="fas fa-users ml-1 mr-2"></i>
-                        Admins
-                    </a>
-                </li>
-                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="#">
-                        <i class="fas fa-copy ml-1 mr-2"></i>
-                        Accounts
                     </a>
                 </li>
             </ul>
@@ -217,6 +202,43 @@ if(!isset($_SESSION['currentUserId'])){
         <!-- Content End -->
 
 
+    </div>
+    <div class="modal" id="changePasswordWindow">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h3 class="text-primary font-weight-bold">Change Password</h3>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <div class="modal-body">
+                    <form action="#" method="POST">
+                        <div class="form-group">
+                            <label for="oldPassword">Old Password</label>
+                            <input class="form-control" required type="password" name="oldPassword" id="oldPassword">
+                            <span class="text-danger font-weight-bold" id="oldPasswordError"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="newPassword">New Password</label>
+                            <input class="form-control" required type="password" name="newPassword" id="newPassword">
+                            <span class="text-danger font-weight-bold" id="newPasswordError"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="confirmPassword">Confirm Password</label>
+                            <input class="form-control" required type="password" name="confirmPassword"
+                                id="confirmPassword">
+                            <span class="text-danger font-weight-bold" id="confirmPasswordError"></span>
+                        </div>
+
+                        <button type="button" class="btn btn-success w-100 mt-3" data-dismiss="modal">Save Changes</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
     </div>
     <!-- Wrapper End     -->
 
