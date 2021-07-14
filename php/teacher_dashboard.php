@@ -223,7 +223,7 @@ if(!isset($_SESSION['currentUserId'])){
                             <span class="text-danger font-weight-bold" id="confirmPasswordError"></span>
                         </div>
 
-                        <button type="button" class="btn btn-success w-100 mt-3" data-dismiss="modal">Save Changes</button>
+                        <button type="button" class="btn btn-success w-100 mt-3" name="submit" data-dismiss="modal">Save Changes</button>
                     </form>
                 </div>
 
