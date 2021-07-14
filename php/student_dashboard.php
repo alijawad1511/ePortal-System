@@ -1,4 +1,19 @@
-<?php session_start(); ?>
+<?php
+session_start();
+
+if(!isset($_SESSION['currentUserId'])){
+
+    ?><script>
+        alert("You are logged out. Please login again");
+        location.replace("../index.php");
+    </script><?php   
+}
+
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,6 +36,7 @@
         include 'connection.php';
         
         $studentID = $_SESSION['currentUserId'];
+        print_r($studentID);
 
         $query = "SELECT * from Students WHERE student_id = $studentID";
         $result = mysqli_query($connection,$query);

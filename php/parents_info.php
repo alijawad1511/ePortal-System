@@ -53,6 +53,7 @@ if(!isset($_SESSION['currentUserId'])){
             <hr class="my-3 sidebar-separator" style="background-color: rgba(255, 255, 255, 0.562);">
 
             <!-- Navigation -->
+            
             <ul>
                 <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="teacher_dashboard.php">
                         <i class="fas fa-tachometer-alt ml-1 mr-2"></i>
