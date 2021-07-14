@@ -1,3 +1,20 @@
+<?php
+session_start();
+
+if(!isset($_SESSION['currentUserId'])){
+
+    ?><script>
+        alert("You are logged out. Please login again");
+        location.replace("../index.php");
+    </script><?php   
+}
+
+
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -119,7 +136,7 @@
                                 Change Password</a>
 
                             <hr class="my-1 color-light">
-                            <a href="#" class="nav-link text-dark font-weight-bold"><i
+                            <a href="logout.php" class="nav-link text-dark font-weight-bold"><i
                                     class="fas fa-sign-out-alt pr-3"></i>Log
                                 Out</a>
                         </div>

@@ -131,7 +131,7 @@ if(!isset($_SESSION['currentUserId'])){
                                 Change Password</a>
 
                             <hr class="my-1 color-light">
-                            <a href="#" class="nav-link text-dark font-weight-bold"><i
+                            <a href="logout.php" class="nav-link text-dark font-weight-bold"><i
                                     class="fas fa-sign-out-alt pr-3"></i>Log
                                 Out</a>
                         </div>
@@ -163,7 +163,7 @@ if(!isset($_SESSION['currentUserId'])){
                         <div><i class="fa fa-group"></i></div>
                     </div>
                 </a>
-                <a href="manage_subjects.php">
+                <a href="#">
                     <div class="card mb-4 p-3 shadow widget-card d-flex text-center text-info">
                         <div class="heading mb-3">Subjects</div>
                         <div><i class="fas fa-book"></i></div>

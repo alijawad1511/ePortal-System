@@ -54,7 +54,7 @@ if(!isset($_SESSION['currentUserId'])){
 
             <!-- Navigation -->
             <ul>
-                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="teacher_dasboard.php">
+                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="teacher_dashboard.php">
                         <i class="fas fa-tachometer-alt ml-1 mr-2"></i>
                         Dashboard
                     </a>
@@ -79,7 +79,7 @@ if(!isset($_SESSION['currentUserId'])){
                         Subjects
                     </a>
                 </li>
-                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="#">
+                <li><a class="nav-link text-white font-weight-bold px-3 py-3" href="student_assessments.php">
                         <i class="fas fa-award ml-1 mr-2"></i>
                         Assessments
                     </a>
@@ -128,7 +128,7 @@ if(!isset($_SESSION['currentUserId'])){
                                 Change Password</a>
 
                             <hr class="my-1 color-light">
-                            <a href="#" class="nav-link text-dark font-weight-bold"><i
+                            <a href="logout.php" class="nav-link text-dark font-weight-bold"><i
                                     class="fas fa-sign-out-alt pr-3"></i>Log
                                 Out</a>
                         </div>
